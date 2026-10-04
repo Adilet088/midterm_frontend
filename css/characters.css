@@ -1,0 +1,464 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #111111;
+    color: #eeeeee;
+}
+
+section {
+    background-color: #111111;
+    border-top: 1px solid #222222;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+p {
+    line-height: 1.7;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    border-bottom: 1px solid #444444;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.nav-link {
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #b83246 !important;
+}
+
+
+/* HERO */
+
+.characters-hero {
+    min-height: 480px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            rgba(17, 17, 17, 0.82),
+            rgba(17, 17, 17, 0.96)
+        ),
+        url("../images/soprano2.avif");
+
+    background-size: cover;
+    background-position: center;
+
+    text-align: center;
+
+    border-top: none;
+}
+
+.characters-hero h1 {
+    font-size: 72px;
+    letter-spacing: 6px;
+    margin: 10px 0 20px;
+}
+
+.hero-label,
+.section-label,
+.profile-label {
+    color: #b83246;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.hero-description {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #cccccc;
+    font-size: 20px;
+}
+
+
+/* GENERAL SECTIONS */
+
+.featured-character,
+.inner-circle,
+.directory {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.section-heading {
+    max-width: 700px;
+    margin: 0 auto 45px;
+}
+
+.section-heading h2 {
+    margin-bottom: 10px;
+}
+
+.section-heading > p:last-child {
+    color: #999999;
+}
+
+
+/* TONY PROFILE */
+
+.tony-profile {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: #1b1b1b;
+    border: 1px solid #444444;
+    border-left: 5px solid #7a1f2b;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.tony-profile:hover {
+    transform: translateY(-5px);
+    border-color: #7a1f2b;
+}
+
+.tony-image {
+    min-height: 350px;
+}
+
+.tony-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+}
+
+.tony-info {
+    padding: 40px;
+}
+
+.tony-info h3 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.profile-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #333333;
+}
+
+.profile-item span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #b83246;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.profile-item p {
+    margin: 0;
+    color: #dddddd;
+}
+
+.profile-description {
+    margin-top: 25px;
+    color: #aaaaaa;
+}
+
+
+/* INNER CIRCLE */
+
+.inner-circle {
+    background-color: #151515;
+}
+
+.inner-card {
+    height: 100%;
+
+    background-color: #1b1b1b;
+
+    border: 1px solid #444444;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.inner-card:hover {
+    transform: translateY(-7px);
+    border-color: #7a1f2b;
+    background-color: #202020;
+}
+
+.inner-card-image {
+    height: 260px;
+    overflow: hidden;
+}
+
+.inner-card-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: top center;
+
+    display: block;
+
+    transition: transform 0.4s ease;
+}
+
+.inner-card:hover .inner-card-image img {
+    transform: scale(1.05);
+}
+
+.inner-card-content {
+    padding: 30px;
+}
+
+.inner-card-content.no-image {
+    min-height: 280px;
+}
+
+.inner-card-content > span {
+    display: block;
+
+    margin-bottom: 20px;
+
+    color: #7a1f2b;
+
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.inner-card-content h3 {
+    margin-bottom: 8px;
+    font-size: 25px;
+}
+
+.inner-card-content .role {
+    margin-bottom: 15px;
+
+    color: #b83246;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.inner-card-content p:last-child {
+    margin: 0;
+    color: #aaaaaa;
+}
+
+
+/* DIRECTORY */
+
+.table-wrapper {
+    overflow-x: auto;
+
+    border: 1px solid #444444;
+}
+
+.character-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background-color: #1b1b1b;
+}
+
+.character-table th {
+    padding: 20px;
+
+    background-color: #202020;
+
+    color: #b83246;
+
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    text-align: left;
+
+    border-bottom: 1px solid #555555;
+}
+
+.character-table td {
+    padding: 18px 20px;
+
+    color: #cccccc;
+
+    border-bottom: 1px solid #333333;
+}
+
+.character-table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.character-table tbody tr:hover {
+    background-color: #242424;
+}
+
+.character-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* FOOTER */
+
+footer {
+    padding: 40px 0;
+
+    background-color: #0b0b0b;
+
+    border-top: 1px solid #444444;
+}
+
+footer h3 {
+    margin-bottom: 10px;
+
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+
+footer p {
+    margin-bottom: 8px;
+
+    color: #b83246;
+}
+
+footer small {
+    color: #777777;
+}
+
+
+/* TABLET */
+
+@media (min-width: 768px) {
+
+    .characters-hero h1 {
+        font-size: 80px;
+    }
+
+    .tony-profile {
+        grid-template-columns: 45% 55%;
+    }
+
+    .tony-image {
+        min-height: 500px;
+    }
+
+    .tony-image img {
+        min-height: 500px;
+    }
+
+}
+
+
+/* LAPTOP */
+
+@media (min-width: 1200px) {
+
+    .characters-hero {
+        min-height: 550px;
+    }
+
+    .characters-hero h1 {
+        font-size: 90px;
+    }
+
+    .tony-info {
+        padding: 55px;
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 575px) {
+
+    h2 {
+        font-size: 34px;
+    }
+
+    .characters-hero {
+        min-height: 430px;
+        padding: 40px 20px;
+    }
+
+    .characters-hero h1 {
+        font-size: 48px;
+        letter-spacing: 3px;
+    }
+
+    .hero-description {
+        font-size: 17px;
+    }
+
+    .section-label {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .tony-info {
+        padding: 25px;
+    }
+
+    .tony-info h3 {
+        font-size: 30px;
+    }
+
+    .inner-card-content {
+        padding: 25px;
+    }
+
+    .inner-card-content.no-image {
+        min-height: auto;
+    }
+
+    .character-table th,
+    .character-table td {
+        padding: 14px;
+        white-space: nowrap;
+    }
+
+}
