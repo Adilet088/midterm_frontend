@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Family Database | The Sopranos</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/assignment5.css">
+    <link rel="stylesheet" href="css/task2.css">
+
+    <script src="js/task2.js" defer></script>
+</head>
+
+<body class="assignment-page database-page">
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html">
+                THE SOPRANOS
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="characters.html">
+                            Characters
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+
+                        <a
+                            class="nav-link dropdown-toggle active"
+                            href="#"
+                            id="interactiveDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+
+                            Interactive
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+
+                            <li>
+                                <a class="dropdown-item" href="game.html">
+                                    Task 1 — Higher or Lower
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="family-database.html">
+                                    Task 2 — Family Database
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="character-creator.html">
+                                    Task 3 — Character Creator
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <main class="database-container">
+
+        <a href="index.html" class="database-back-link">
+            &larr; Back to main page
+        </a>
+
+        <header class="database-header">
+
+            <p class="database-eyebrow">
+                THE SOPRANOS ARCHIVE
+            </p>
+
+            <h1>Family Database</h1>
+
+            <p>
+                Explore the characters, discover their roles
+                and choose your favorite members of the family.
+            </p>
+
+        </header>
+
+        <section
+            class="database-statistics"
+            aria-label="Database statistics">
+
+            <div class="database-stat">
+                <span class="database-stat-label">Characters</span>
+                <strong id="total-characters">0</strong>
+            </div>
+
+            <div class="database-stat">
+                <span class="database-stat-label">Main Characters</span>
+                <strong id="lead-characters">0</strong>
+            </div>
+
+            <div class="database-stat">
+                <span class="database-stat-label">Average Seasons</span>
+                <strong id="average-seasons">0</strong>
+            </div>
+
+            <div class="database-stat">
+                <span class="database-stat-label">Favorites</span>
+                <strong id="favorite-count">0 / 3</strong>
+            </div>
+
+        </section>
+
+        <section class="database-panel">
+
+            <div class="database-search">
+
+                <label for="character-search">
+                    Search characters
+                </label>
+
+                <input
+                    type="search"
+                    id="character-search"
+                    placeholder="Search by name, role or family..."
+                    autocomplete="off">
+
+            </div>
+
+            <p
+                id="database-message"
+                class="database-message"
+                role="status"
+                aria-live="polite">
+            </p>
+
+            <div
+                id="character-list"
+                class="character-grid"
+                aria-label="Character list">
+            </div>
+
+            <p id="no-results" class="no-results" hidden>
+                No characters found. Try another search.
+            </p>
+
+        </section>
+
+        <p class="database-disclaimer">
+            This interactive character database was created for Assignment 5.
+        </p>
+
+    </main>
+
+<footer class="assignment-footer">
+        <h3>THE SOPRANOS</h3>
+        <p>Family • Loyalty • Power</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
