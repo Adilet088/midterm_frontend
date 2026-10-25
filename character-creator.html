@@ -108,9 +108,7 @@
                 BUILD YOUR OWN CHARACTER
             </p>
 
-            <h1>
-                Character Creator
-            </h1>
+            <h1>Character Creator</h1>
 
             <p>
                 Create a new member of the family.
@@ -140,6 +138,8 @@
                         hidden>
                     </div>
 
+                    <!-- Character name -->
+
                     <div class="form-field">
 
                         <label for="character-name">
@@ -160,10 +160,13 @@
 
                         <small
                             id="character-name-error"
-                            class="field-error">
+                            class="field-error"
+                            hidden>
                         </small>
 
                     </div>
+
+                    <!-- Character class -->
 
                     <div class="form-field">
 
@@ -187,10 +190,13 @@
 
                         <small
                             id="character-class-error"
-                            class="field-error">
+                            class="field-error"
+                            hidden>
                         </small>
 
                     </div>
+
+                    <!-- Character color -->
 
                     <div class="form-field">
 
@@ -214,10 +220,13 @@
 
                         <small
                             id="character-color-error"
-                            class="field-error">
+                            class="field-error"
+                            hidden>
                         </small>
 
                     </div>
+
+                    <!-- Skills -->
 
                     <fieldset class="skills-fieldset">
 
@@ -229,9 +238,7 @@
 
                         <div class="form-field">
 
-                            <label for="strength">
-                                Strength
-                            </label>
+                            <label for="strength">Strength</label>
 
                             <input
                                 type="number"
@@ -245,16 +252,15 @@
 
                             <small
                                 id="strength-error"
-                                class="field-error">
+                                class="field-error"
+                                hidden>
                             </small>
 
                         </div>
 
                         <div class="form-field">
 
-                            <label for="intelligence">
-                                Intelligence
-                            </label>
+                            <label for="intelligence">Intelligence</label>
 
                             <input
                                 type="number"
@@ -268,16 +274,15 @@
 
                             <small
                                 id="intelligence-error"
-                                class="field-error">
+                                class="field-error"
+                                hidden>
                             </small>
 
                         </div>
 
                         <div class="form-field">
 
-                            <label for="leadership">
-                                Leadership
-                            </label>
+                            <label for="leadership">Leadership</label>
 
                             <input
                                 type="number"
@@ -291,16 +296,15 @@
 
                             <small
                                 id="leadership-error"
-                                class="field-error">
+                                class="field-error"
+                                hidden>
                             </small>
 
                         </div>
 
                         <div class="form-field">
 
-                            <label for="loyalty">
-                                Loyalty
-                            </label>
+                            <label for="loyalty">Loyalty</label>
 
                             <input
                                 type="number"
@@ -314,10 +318,13 @@
 
                             <small
                                 id="loyalty-error"
-                                class="field-error">
+                                class="field-error"
+                                hidden>
                             </small>
 
                         </div>
+
+                        <!-- Skill point counters -->
 
                         <div class="points-counter">
                             <span>Points used</span>
@@ -333,7 +340,8 @@
                             id="skill-points-error"
                             class="field-error"
                             role="status"
-                            aria-live="polite">
+                            aria-live="polite"
+                            hidden>
                         </p>
 
                     </fieldset>
@@ -341,20 +349,20 @@
                     <button
                         type="submit"
                         class="creator-submit">
-
                         Create Character
                     </button>
 
                     <button
                         type="reset"
                         class="creator-reset">
-
                         Reset Form
                     </button>
 
                 </form>
 
             </section>
+
+            <!-- Live preview -->
 
             <aside class="creator-panel preview-panel">
 
@@ -372,44 +380,39 @@
                         THE SOPRANOS FAMILY
                     </p>
 
-                    <h3 id="preview-name">
-                        Your Character
-                    </h3>
+                    <h3 id="preview-name">Your Character</h3>
 
                     <p
                         id="preview-class"
                         class="preview-class">
-
-                        Character Class
+                        Not selected
                     </p>
 
                     <p class="preview-color-label">
                         Color:
-                        <span id="preview-color">
-                            Not selected
-                        </span>
+                        <span id="preview-color">Not selected</span>
                     </p>
 
                     <div class="preview-skills">
 
                         <p>
                             Strength:
-                            <strong id="preview-strength">—</strong>
+                            <strong id="preview-strength">0</strong>
                         </p>
 
                         <p>
                             Intelligence:
-                            <strong id="preview-intelligence">—</strong>
+                            <strong id="preview-intelligence">0</strong>
                         </p>
 
                         <p>
                             Leadership:
-                            <strong id="preview-leadership">—</strong>
+                            <strong id="preview-leadership">0</strong>
                         </p>
 
                         <p>
                             Loyalty:
-                            <strong id="preview-loyalty">—</strong>
+                            <strong id="preview-loyalty">0</strong>
                         </p>
 
                     </div>
@@ -420,6 +423,8 @@
                     </p>
 
                 </article>
+
+                <!-- Created character result -->
 
                 <section
                     id="creation-result"
@@ -434,12 +439,14 @@
 
     </main>
 
-<footer class="assignment-footer">
+    <footer class="assignment-footer">
         <h3>THE SOPRANOS</h3>
         <p>Family • Loyalty • Power</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
 
 </body>
 </html>
