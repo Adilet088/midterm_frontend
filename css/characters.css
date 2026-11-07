@@ -462,3 +462,26 @@ footer small {
     }
 
 }
+
+/* === Добавления для корректной валидации (ошибки / успех) и ховеров === */
+.form-control.is-invalid,
+input.field-invalid,
+select.field-invalid {
+    border-color: #ff737f !important;
+    background-color: #2a1518 !important;
+}
+
+.form-control.is-valid,
+input.field-valid,
+select.field-valid {
+    border-color: #75d99a !important;
+}
+
+.invalid-feedback,
+.field-error {
+    display: none;
+    margin-top: 6px;
+    color: #ff737f;
+    font-size: 13px;
+    font-weight: 600;
+}

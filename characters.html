@@ -33,7 +33,6 @@
             aria-label="Toggle navigation">
 
             <span class="navbar-toggler-icon"></span>
-
         </button>
 
         <div class="collapse navbar-collapse" id="mainNavbar">
@@ -41,45 +40,66 @@
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
-                        Home
-                    </a>
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html#about">
-                        About
-                    </a>
+                    <a class="nav-link" href="index.html#about">About</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="characters.html">
-                        Characters
-                    </a>
+                    <a class="nav-link active" href="characters.html">Characters</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html#seasons">
-                        Seasons
-                    </a>
+                    <a class="nav-link" href="index.html#seasons">Seasons</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html#gallery">
-                        Gallery
-                    </a>
+                    <a class="nav-link" href="index.html#gallery">Gallery</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html#contact">
-                        Contact
+                    <a class="nav-link" href="index.html#contact">Contact</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="interactiveDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Interactive
                     </a>
+
+                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+
+                        <li>
+                            <a class="dropdown-item" href="game.html">
+                                Task 1 — Higher or Lower
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="family-database.html">
+                                Task 2 — Family Database
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="character-creator.html">
+                                Task 3 — Character Creator
+                            </a>
+                        </li>
+
+                    </ul>
                 </li>
 
             </ul>
 
         </div>
-
     </div>
 </nav>
 
@@ -565,11 +585,11 @@
 
 </footer>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
 
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
-
+<button id="backToTop" style="display: none; position: fixed; bottom: 30px; right: 30px; z-index: 999; background-color: #7a1f2b; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">↑ Top</button>
 </body>
 
 </html>

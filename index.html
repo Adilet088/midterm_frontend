@@ -61,7 +61,6 @@
                     <a class="nav-link" href="#contact">Contact</a>
                 </li>
 
-                <!-- НОВОЕ ВЫПАДАЮЩЕЕ МЕНЮ ДЛЯ ИНТЕРАКТИВНЫХ ЗАДАНИЙ -->
                 <li class="nav-item dropdown">
                     <a
                         class="nav-link dropdown-toggle"
@@ -72,22 +71,27 @@
                         aria-expanded="false">
                         Interactive
                     </a>
+
                     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+
                         <li>
                             <a class="dropdown-item" href="game.html">
                                 Task 1 — Higher or Lower
                             </a>
                         </li>
+
                         <li>
                             <a class="dropdown-item" href="family-database.html">
                                 Task 2 — Family Database
                             </a>
                         </li>
+
                         <li>
                             <a class="dropdown-item" href="character-creator.html">
                                 Task 3 — Character Creator
                             </a>
                         </li>
+
                     </ul>
                 </li>
 
@@ -207,7 +211,6 @@
 
                 </div>
 
-
                 <div class="character-card">
 
                     <span class="character-number">02</span>
@@ -220,7 +223,6 @@
                     </p>
 
                 </div>
-
 
                 <div class="character-card">
 
@@ -235,7 +237,6 @@
 
                 </div>
 
-
                 <div class="character-card">
 
                     <span class="character-number">04</span>
@@ -248,7 +249,6 @@
 
                 </div>
 
-
                 <div class="character-card">
 
                     <span class="character-number">05</span>
@@ -260,7 +260,6 @@
                     </p>
 
                 </div>
-
 
                 <div class="character-card">
 
@@ -318,7 +317,6 @@
 
                 </div>
 
-
                 <div class="col-12 col-md-6 col-lg-4">
 
                     <div class="season-card h-100">
@@ -335,7 +333,6 @@
                     </div>
 
                 </div>
-
 
                 <div class="col-12 col-md-6 col-lg-4">
 
@@ -354,7 +351,6 @@
 
                 </div>
 
-
                 <div class="col-12 col-md-6 col-lg-4">
 
                     <div class="season-card h-100">
@@ -372,7 +368,6 @@
 
                 </div>
 
-
                 <div class="col-12 col-md-6 col-lg-4">
 
                     <div class="season-card h-100">
@@ -389,7 +384,6 @@
                     </div>
 
                 </div>
-
 
                 <div class="col-12 col-md-6 col-lg-4">
 
@@ -438,7 +432,6 @@
 
                 </div>
 
-
                 <div class="col-12 col-md-6 col-lg-4">
 
                     <img
@@ -447,7 +440,6 @@
                         class="img-fluid gallery-img">
 
                 </div>
-
 
                 <div class="col-12 col-md-6 col-lg-4">
 
@@ -464,6 +456,8 @@
 
     </section>
 
+
+    <!-- UPDATED CONTACT FORM -->
 
     <section id="contact" class="py-5">
 
@@ -486,12 +480,12 @@
 
                 <div class="col-12 col-md-8">
 
-                    <form action="#" method="post">
+                    <form id="contactForm" novalidate>
 
                         <div class="mb-3">
 
                             <label for="name" class="form-label">
-                                Name
+                                Full Name
                             </label>
 
                             <input
@@ -501,6 +495,8 @@
                                 name="name"
                                 placeholder="Enter your name"
                                 required>
+
+                            <div class="invalid-feedback"></div>
 
                         </div>
 
@@ -519,6 +515,66 @@
                                 placeholder="Enter your email"
                                 required>
 
+                            <div class="invalid-feedback"></div>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label for="phone" class="form-label">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                class="form-control"
+                                id="phone"
+                                name="phone"
+                                placeholder="+7 777 123 4567"
+                                required>
+
+                            <div class="invalid-feedback"></div>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label for="eventDate" class="form-label">
+                                Event Date
+                            </label>
+
+                            <input
+                                type="date"
+                                class="form-control"
+                                id="eventDate"
+                                name="eventDate"
+                                required>
+
+                            <div class="invalid-feedback"></div>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label for="guests" class="form-label">
+                                Number of Guests
+                            </label>
+
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="guests"
+                                name="guests"
+                                placeholder="Enter number of guests"
+                                min="1"
+                                max="10"
+                                required>
+
+                            <div class="invalid-feedback"></div>
+
                         </div>
 
 
@@ -536,12 +592,25 @@
                                 placeholder="Write your message"
                                 required></textarea>
 
+                            <div class="invalid-feedback"></div>
+
                         </div>
 
 
                         <button type="submit" class="btn submit-button">
                             Send Message
                         </button>
+
+
+                        <div
+                            id="formSuccess"
+                            class="alert alert-success mt-3 d-none"
+                            role="status"
+                            aria-live="polite">
+
+                            Your message has been sent successfully!
+
+                        </div>
 
                     </form>
 
@@ -575,10 +644,12 @@
 </footer>
 
 
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<script src="js/contact.js"></script>
+<script src="js/main.js"></script>
+<button id="backToTop" style="display: none; position: fixed; bottom: 30px; right: 30px; z-index: 999; background-color: #7a1f2b; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">↑ Top</button>
 </body>
 
 </html>

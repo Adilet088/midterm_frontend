@@ -1,10 +1,9 @@
 "use strict";
 
-// ==================== CONSTANTS ====================
-
 const TOTAL_SKILL_POINTS = 20;
 const MIN_SKILL_VALUE = 1;
 const MAX_SKILL_VALUE = 10;
+const STORAGE_KEY = "sopranosCustomCharacters";
 
 const TAKEN_NAMES = [
     "Tony Soprano",
@@ -44,8 +43,6 @@ const COLOR_NAMES = {
     black: "Black",
     ivory: "Ivory"
 };
-
-// ==================== HTML ELEMENTS ====================
 
 const form = document.getElementById("character-form");
 const formErrors = document.getElementById("form-errors");
@@ -89,18 +86,13 @@ const fieldErrorElements = {};
 
 allFields.forEach(function (field) {
     const errorId = field.getAttribute("aria-describedby");
-
     if (errorId) {
-        fieldErrorElements[field.id] =
-            document.getElementById(errorId);
+        fieldErrorElements[field.id] = document.getElementById(errorId);
     }
 });
 
 let preserveCreationResultOnReset = false;
-
 form.noValidate = true;
-
-// ==================== SKILL FUNCTIONS ====================
 
 function getSkillTotal() {
     return Object.values(skillInputs).reduce(function (total, input) {
@@ -121,15 +113,11 @@ function updateSkillPoints() {
     const total = getSkillTotal();
     const remaining = TOTAL_SKILL_POINTS - total;
 
-    pointsUsedElement.textContent =
-        `${total} / ${TOTAL_SKILL_POINTS}`;
-
+    pointsUsedElement.textContent = `${total} / ${TOTAL_SKILL_POINTS}`;
     pointsRemainingElement.textContent = remaining;
 
     if (total !== TOTAL_SKILL_POINTS) {
-        skillPointsError.textContent =
-            `You must use exactly ${TOTAL_SKILL_POINTS} skill points.`;
-
+        skillPointsError.textContent = `You must use exactly ${TOTAL_SKILL_POINTS} skill points.`;
         skillPointsError.hidden = false;
     } else {
         skillPointsError.textContent = "";
@@ -139,8 +127,6 @@ function updateSkillPoints() {
     return total;
 }
 
-// ==================== LIVE PREVIEW ====================
-
 function updatePreview() {
     const name = nameInput.value.trim();
     const selectedClass = classInput.value;
@@ -149,18 +135,15 @@ function updatePreview() {
     const total = updateSkillPoints();
 
     previewName.textContent = name || "Your Character";
-
     previewClass.textContent = selectedClass
-        ? selectedClass.charAt(0).toUpperCase() +
-          selectedClass.slice(1)
+        ? selectedClass.charAt(0).toUpperCase() + selectedClass.slice(1)
         : "Not selected";
 
     previewColor.textContent = selectedColor
         ? COLOR_NAMES[selectedColor] || selectedColor
         : "Not selected";
 
-    previewTotal.textContent =
-        `${total} / ${TOTAL_SKILL_POINTS}`;
+    previewTotal.textContent = `${total} / ${TOTAL_SKILL_POINTS}`;
 
     previewStrength.textContent = skills.strength;
     previewIntelligence.textContent = skills.intelligence;
@@ -175,20 +158,15 @@ function updatePreview() {
     );
 
     if (selectedColor && COLOR_NAMES[selectedColor]) {
-        characterPreview.classList.add(
-            `preview-color-${selectedColor}`
-        );
+        characterPreview.classList.add(`preview-color-${selectedColor}`);
     }
 }
-
-// ==================== VALIDATION HELPERS ====================
 
 function clearFieldError(field) {
     field.classList.remove("field-invalid", "field-valid");
     field.removeAttribute("aria-invalid");
 
     const errorElement = fieldErrorElements[field.id];
-
     if (errorElement) {
         errorElement.textContent = "";
         errorElement.hidden = true;
@@ -209,96 +187,46 @@ function clearValidation() {
 
 function validateField(field, label) {
     const errors = [];
-
-    if (field.validity.valueMissing) {
-        errors.push(`${label} is required.`);
-    }
-
-    if (field.validity.tooShort) {
-        errors.push(`${label} is too short.`);
-    }
-
-    if (field.validity.tooLong) {
-        errors.push(`${label} is too long.`);
-    }
-
-    if (field.validity.patternMismatch) {
-        errors.push(`${label} contains invalid characters.`);
-    }
-
-    if (field.validity.rangeUnderflow) {
-        errors.push(`${label} is below the minimum value.`);
-    }
-
-    if (field.validity.rangeOverflow) {
-        errors.push(`${label} exceeds the maximum value.`);
-    }
-
-    if (field.validity.stepMismatch) {
-        errors.push(`${label} must be a whole number.`);
-    }
-
+    if (field.validity.valueMissing) errors.push(`${label} is required.`);
+    if (field.validity.tooShort) errors.push(`${label} is too short.`);
+    if (field.validity.tooLong) errors.push(`${label} is too long.`);
+    if (field.validity.patternMismatch) errors.push(`${label} contains invalid characters.`);
+    if (field.validity.rangeUnderflow) errors.push(`${label} is below the minimum value.`);
+    if (field.validity.rangeOverflow) errors.push(`${label} exceeds the maximum value.`);
+    if (field.validity.stepMismatch) errors.push(`${label} must be a whole number.`);
     return errors;
 }
 
-// ==================== CUSTOM FIELD RULES ====================
-
 function getCustomFieldErrors(field) {
     const errors = [];
-
     if (field === nameInput) {
         const normalizedName = nameInput.value.trim().toLowerCase();
-
-        if (
-            normalizedName &&
-            TAKEN_NAMES.some(function (takenName) {
-                return takenName.toLowerCase() === normalizedName;
-            })
-        ) {
+        if (normalizedName && TAKEN_NAMES.some(t => t.toLowerCase() === normalizedName)) {
             errors.push("This character name is already taken.");
         }
     }
 
     if (field === classInput && classInput.value) {
         const requirement = CLASS_REQUIREMENTS[classInput.value];
-
         if (requirement) {
-            const skillValue =
-                Number(skillInputs[requirement.skill].value || 0);
-
-            if (
-                skillInputs[requirement.skill].value !== "" &&
-                skillValue < requirement.minimum
-            ) {
-                errors.push(
-                    `${classInput.value} requires ` +
-                    `${requirement.skill} to be at least ` +
-                    `${requirement.minimum}.`
-                );
+            const skillValue = Number(skillInputs[requirement.skill].value || 0);
+            if (skillInputs[requirement.skill].value !== "" && skillValue < requirement.minimum) {
+                errors.push(`${classInput.value} requires ${requirement.skill} to be at least ${requirement.minimum}.`);
             }
         }
     }
-
     return errors;
 }
 
 function updateFieldValidation(field) {
     clearFieldError(field);
-
-    const label =
-        field.labels[0]?.textContent.trim() || field.id;
-
-    const errors = [
-        ...validateField(field, label),
-        ...getCustomFieldErrors(field)
-    ];
+    const label = field.labels[0]?.textContent.trim() || field.id;
+    const errors = [...validateField(field, label), ...getCustomFieldErrors(field)];
 
     if (errors.length > 0) {
         field.classList.add("field-invalid");
         field.setAttribute("aria-invalid", "true");
-
         const errorElement = fieldErrorElements[field.id];
-
         if (errorElement) {
             errorElement.textContent = errors.join(" ");
             errorElement.hidden = false;
@@ -311,25 +239,14 @@ function updateFieldValidation(field) {
 
 function updateRelatedValidation(field) {
     updateFieldValidation(field);
-
-    // A class may depend on a skill value.
     if (Object.values(skillInputs).includes(field)) {
-        if (classInput.value) {
-            updateFieldValidation(classInput);
-        }
+        if (classInput.value) updateFieldValidation(classInput);
     }
-
-    // Changing the class can change its skill requirement.
     if (field === classInput) {
         const requirement = CLASS_REQUIREMENTS[classInput.value];
-
-        if (requirement) {
-            updateFieldValidation(skillInputs[requirement.skill]);
-        }
+        if (requirement) updateFieldValidation(skillInputs[requirement.skill]);
     }
 }
-
-// ==================== COMPLETE FORM VALIDATION ====================
 
 function validateForm() {
     const errors = {
@@ -343,13 +260,7 @@ function validateForm() {
     });
 
     const normalizedName = nameInput.value.trim().toLowerCase();
-
-    if (
-        normalizedName &&
-        TAKEN_NAMES.some(function (takenName) {
-            return takenName.toLowerCase() === normalizedName;
-        })
-    ) {
+    if (normalizedName && TAKEN_NAMES.some(t => t.toLowerCase() === normalizedName)) {
         errors.name.push("This character name is already taken.");
     }
 
@@ -357,32 +268,19 @@ function validateForm() {
     const requirement = CLASS_REQUIREMENTS[selectedClass];
     const skills = getSkillValues();
 
-    if (
-        requirement &&
-        skills[requirement.skill] < requirement.minimum
-    ) {
-        errors.class.push(
-            `${selectedClass} requires ${requirement.skill} ` +
-            `to be at least ${requirement.minimum}.`
-        );
+    if (requirement && skills[requirement.skill] < requirement.minimum) {
+        errors.class.push(`${selectedClass} requires ${requirement.skill} to be at least ${requirement.minimum}.`);
     }
 
     const total = getSkillTotal();
-
-    errors.skills = total !== TOTAL_SKILL_POINTS
-        ? [
-            `You must use exactly ${TOTAL_SKILL_POINTS} skill points.`
-        ]
-        : [];
+    errors.skills = total !== TOTAL_SKILL_POINTS ? [`You must use exactly ${TOTAL_SKILL_POINTS} skill points.`] : [];
 
     return errors;
 }
 
 function showFormErrors(errors) {
     clearValidation();
-
     const allErrors = [];
-
     const fieldMap = {
         name: nameInput,
         class: classInput,
@@ -394,22 +292,13 @@ function showFormErrors(errors) {
     };
 
     Object.entries(errors).forEach(function ([key, messages]) {
-        if (messages.length === 0) {
-            return;
-        }
-
-        messages.forEach(function (message) {
-            allErrors.push(message);
-        });
-
+        if (messages.length === 0) return;
+        messages.forEach(m => allErrors.push(m));
         const field = fieldMap[key];
-
         if (field) {
             field.classList.add("field-invalid");
             field.setAttribute("aria-invalid", "true");
-
             const errorElement = fieldErrorElements[field.id];
-
             if (errorElement) {
                 errorElement.textContent = messages.join(" ");
                 errorElement.hidden = false;
@@ -424,130 +313,89 @@ function showFormErrors(errors) {
 
     if (allErrors.length > 0) {
         const heading = document.createElement("p");
-
-        heading.textContent =
-            `Please correct ${allErrors.length} error(s):`;
-
+        heading.textContent = `Please correct ${allErrors.length} error(s):`;
         formErrors.appendChild(heading);
 
         const list = document.createElement("ul");
-
-        allErrors.forEach(function (message) {
+        allErrors.forEach(message => {
             const item = document.createElement("li");
             item.textContent = message;
             list.appendChild(item);
         });
-
         formErrors.appendChild(list);
+        
+        // jQuery анимация для показа ошибок
+        $('#form-errors').hide().removeClass('d-none').slideDown(400);
         formErrors.hidden = false;
     } else {
-        Object.values(fieldMap).forEach(function (field) {
+        Object.values(fieldMap).forEach(field => {
             field.classList.add("field-valid");
             field.setAttribute("aria-invalid", "false");
         });
     }
 }
 
-// ==================== RESULT CARD ====================
-
 function createTextElement(tagName, className, text) {
     const element = document.createElement(tagName);
-
-    if (className) {
-        element.className = className;
-    }
-
+    if (className) element.className = className;
     element.textContent = text;
-
     return element;
 }
 
 function createResultCard() {
     const card = document.createElement("div");
-
     card.className = `result-card result-${colorInput.value}`;
 
-    const title = createTextElement(
-        "h3",
-        "result-name",
-        nameInput.value.trim()
-    );
-
-    const role = createTextElement(
-        "p",
-        "result-class",
-        `Class: ${classInput.value}`
-    );
-
-    const color = createTextElement(
-        "p",
-        "result-color",
-        `Color: ${COLOR_NAMES[colorInput.value] || colorInput.value}`
-    );
-
-    const total = createTextElement(
-        "p",
-        "result-total",
-        `Total skill points: ${getSkillTotal()}`
-    );
-
-    const skills = createTextElement(
-        "ul",
-        "result-skills",
-        ""
-    );
+    const title = createTextElement("h3", "result-name", nameInput.value.trim());
+    const role = createTextElement("p", "result-class", `Class: ${classInput.value}`);
+    const color = createTextElement("p", "result-color", `Color: ${COLOR_NAMES[colorInput.value] || colorInput.value}`);
+    const total = createTextElement("p", "result-total", `Total skill points: ${getSkillTotal()}`);
+    const skills = createTextElement("ul", "result-skills", "");
 
     Object.entries(getSkillValues()).forEach(function ([skill, value]) {
-        const item = createTextElement(
-            "li",
-            "",
-            `${skill.charAt(0).toUpperCase() + skill.slice(1)}: ${value}`
-        );
-
+        const item = createTextElement("li", "", `${skill.charAt(0).toUpperCase() + skill.slice(1)}: ${value}`);
         skills.appendChild(item);
     });
 
     card.append(title, role, color, total, skills);
-
     return card;
 }
 
-// ==================== LIVE INPUT EVENTS ====================
+// Сохранение персонажа в localStorage
+function saveCustomCharacter(charData) {
+    try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        const customChars = stored ? JSON.parse(stored) : [];
+        customChars.push(charData);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(customChars));
+    } catch (e) {
+        console.error("Could not save character", e);
+    }
+}
 
 allFields.forEach(function (field) {
     field.addEventListener("input", function () {
         updatePreview();
         updateRelatedValidation(field);
     });
-
     field.addEventListener("change", function () {
         updatePreview();
         updateRelatedValidation(field);
     });
-
     field.addEventListener("blur", function () {
         updateRelatedValidation(field);
     });
 });
 
-// ==================== FORM SUBMISSION ====================
-
 form.addEventListener("submit", function (event) {
     event.preventDefault();
-
     const errors = validateForm();
-
     showFormErrors(errors);
 
-    const hasErrors = Object.values(errors).some(function (messages) {
-        return messages.length > 0;
-    });
+    const hasErrors = Object.values(errors).some(messages => messages.length > 0);
 
     if (hasErrors) {
-        const firstInvalidField = form.querySelector(
-            '[aria-invalid="true"]'
-        );
-
+        const firstInvalidField = form.querySelector('[aria-invalid="true"]');
         if (firstInvalidField) {
             firstInvalidField.focus();
         } else if (errors.skills.length > 0) {
@@ -555,12 +403,23 @@ form.addEventListener("submit", function (event) {
         } else {
             formErrors.focus();
         }
-
         return;
     }
 
-    const resultCard = createResultCard();
+    // Сохраняем нового персонажа
+    const newCharacter = {
+        id: "custom-" + Date.now(),
+        name: nameInput.value.trim(),
+        role: classInput.value.charAt(0).toUpperCase() + classInput.value.slice(1),
+        family: "Custom Family",
+        seasons: 1,
+        isLeadCharacter: classInput.value === "boss" || classInput.value === "underboss",
+        isCustom: true
+    };
 
+    saveCustomCharacter(newCharacter);
+
+    const resultCard = createResultCard();
     creationResult.replaceChildren(resultCard);
     creationResult.hidden = false;
 
@@ -568,23 +427,17 @@ form.addEventListener("submit", function (event) {
     form.reset();
 });
 
-// ==================== FORM RESET ====================
-
 form.addEventListener("reset", function () {
     window.setTimeout(function () {
         clearValidation();
         updatePreview();
-
         if (!preserveCreationResultOnReset) {
             creationResult.replaceChildren();
             creationResult.hidden = true;
         }
-
         preserveCreationResultOnReset = false;
     }, 0);
 });
-
-// ==================== INITIAL SETUP ====================
 
 clearValidation();
 updatePreview();

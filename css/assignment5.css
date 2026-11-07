@@ -59,7 +59,6 @@ p {
     text-decoration: underline;
 }
 
-
 .back-link:focus-visible,
 .database-back-link:focus-visible,
 .creator-back-link:focus-visible,
@@ -263,7 +262,6 @@ form {
     color: #ffffff;
 }
 
-
 .game-btn,
 .favorite-button,
 .creator-submit,
@@ -314,7 +312,6 @@ form {
     background-color: #333333;
     border-color: #b83246;
 }
-
 
 .creator-layout {
     display: grid;
@@ -368,7 +365,6 @@ form {
     text-align: center;
 }
 
-
 footer,
 .assignment-footer {
     width: 100%;
@@ -392,7 +388,6 @@ footer p,
     color: #b83246;
 }
 
-
 @media (max-width: 850px) {
     .character-grid,
     .creator-layout {
@@ -407,7 +402,6 @@ footer p,
         position: static;
     }
 }
-
 
 @media (max-width: 575px) {
     h2 {
@@ -441,4 +435,36 @@ footer p,
     .game-btn {
         width: 100%;
     }
+}
+
+/* === Стили для валидации форм (ошибки и успех) === */
+.form-control.is-invalid,
+input.field-invalid,
+select.field-invalid {
+    border-color: #ff737f !important;
+    background-color: #2a1518 !important;
+}
+
+.form-control.is-valid,
+input.field-valid,
+select.field-valid {
+    border-color: #75d99a !important;
+}
+
+.invalid-feedback,
+.field-error {
+    display: none;
+    margin-top: 6px;
+    color: #ff737f;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ff667a !important;
+}
+
+.character-card button:hover,
+.favorite-button:hover {
+    filter: brightness(1.2);
 }
