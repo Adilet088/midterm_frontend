@@ -1,8 +1,6 @@
 "use strict";
 
 const TOTAL_SKILL_POINTS = 20;
-const MIN_SKILL_VALUE = 1;
-const MAX_SKILL_VALUE = 10;
 const STORAGE_KEY = "sopranosCustomCharacters";
 
 const TAKEN_NAMES = [
@@ -19,22 +17,10 @@ const TAKEN_NAMES = [
 ];
 
 const CLASS_REQUIREMENTS = {
-    boss: {
-        skill: "leadership",
-        minimum: 5
-    },
-    underboss: {
-        skill: "intelligence",
-        minimum: 5
-    },
-    enforcer: {
-        skill: "strength",
-        minimum: 5
-    },
-    consigliere: {
-        skill: "loyalty",
-        minimum: 5
-    }
+    boss: { skill: "leadership", minimum: 5 },
+    underboss: { skill: "intelligence", minimum: 5 },
+    enforcer: { skill: "strength", minimum: 5 },
+    consigliere: { skill: "loyalty", minimum: 5 }
 };
 
 const COLOR_NAMES = {
@@ -50,6 +36,7 @@ const formErrors = document.getElementById("form-errors");
 const nameInput = document.getElementById("character-name");
 const classInput = document.getElementById("character-class");
 const colorInput = document.getElementById("character-color");
+const portraitInput = document.getElementById("character-portrait");
 
 const skillInputs = {
     strength: document.getElementById("strength"),
@@ -62,6 +49,7 @@ const pointsUsedElement = document.getElementById("points-used");
 const pointsRemainingElement = document.getElementById("points-remaining");
 const skillPointsError = document.getElementById("skill-points-error");
 
+const previewAvatar = document.getElementById("preview-avatar");
 const previewName = document.getElementById("preview-name");
 const previewClass = document.getElementById("preview-class");
 const previewColor = document.getElementById("preview-color");
@@ -72,6 +60,11 @@ const previewIntelligence = document.getElementById("preview-intelligence");
 const previewLeadership = document.getElementById("preview-leadership");
 const previewLoyalty = document.getElementById("preview-loyalty");
 
+const barStrength = document.getElementById("bar-strength");
+const barIntelligence = document.getElementById("bar-intelligence");
+const barLeadership = document.getElementById("bar-leadership");
+const barLoyalty = document.getElementById("bar-loyalty");
+
 const characterPreview = document.getElementById("character-preview");
 const creationResult = document.getElementById("creation-result");
 
@@ -79,12 +72,14 @@ const allFields = [
     nameInput,
     classInput,
     colorInput,
+    portraitInput,
     ...Object.values(skillInputs)
 ];
 
 const fieldErrorElements = {};
 
 allFields.forEach(function (field) {
+    if (!field) return;
     const errorId = field.getAttribute("aria-describedby");
     if (errorId) {
         fieldErrorElements[field.id] = document.getElementById(errorId);
@@ -116,8 +111,13 @@ function updateSkillPoints() {
     pointsUsedElement.textContent = `${total} / ${TOTAL_SKILL_POINTS}`;
     pointsRemainingElement.textContent = remaining;
 
-    if (total !== TOTAL_SKILL_POINTS) {
-        skillPointsError.textContent = `You must use exactly ${TOTAL_SKILL_POINTS} skill points.`;
+    pointsUsedElement.classList.toggle("points-valid", total === TOTAL_SKILL_POINTS);
+    pointsUsedElement.classList.toggle("points-invalid", total > TOTAL_SKILL_POINTS);
+    pointsRemainingElement.classList.toggle("points-valid", remaining === 0);
+    pointsRemainingElement.classList.toggle("points-invalid", remaining < 0);
+
+    if (total > 0 && total !== TOTAL_SKILL_POINTS) {
+        skillPointsError.textContent = `You must use exactly ${TOTAL_SKILL_POINTS} skill points (currently ${total}).`;
         skillPointsError.hidden = false;
     } else {
         skillPointsError.textContent = "";
@@ -131,8 +131,13 @@ function updatePreview() {
     const name = nameInput.value.trim();
     const selectedClass = classInput.value;
     const selectedColor = colorInput.value;
+    const selectedPortrait = portraitInput ? portraitInput.value : "images/soprano7.jpeg";
     const skills = getSkillValues();
     const total = updateSkillPoints();
+
+    if (previewAvatar) {
+        previewAvatar.src = selectedPortrait;
+    }
 
     previewName.textContent = name || "Your Character";
     previewClass.textContent = selectedClass
@@ -150,6 +155,11 @@ function updatePreview() {
     previewLeadership.textContent = skills.leadership;
     previewLoyalty.textContent = skills.loyalty;
 
+    if (barStrength) barStrength.style.width = `${Math.min(100, skills.strength * 10)}%`;
+    if (barIntelligence) barIntelligence.style.width = `${Math.min(100, skills.intelligence * 10)}%`;
+    if (barLeadership) barLeadership.style.width = `${Math.min(100, skills.leadership * 10)}%`;
+    if (barLoyalty) barLoyalty.style.width = `${Math.min(100, skills.loyalty * 10)}%`;
+
     characterPreview.classList.remove(
         "preview-color-crimson",
         "preview-color-gold",
@@ -163,6 +173,7 @@ function updatePreview() {
 }
 
 function clearFieldError(field) {
+    if (!field) return;
     field.classList.remove("field-invalid", "field-valid");
     field.removeAttribute("aria-invalid");
 
@@ -219,6 +230,7 @@ function getCustomFieldErrors(field) {
 }
 
 function updateFieldValidation(field) {
+    if (!field || field === portraitInput) return;
     clearFieldError(field);
     const label = field.labels[0]?.textContent.trim() || field.id;
     const errors = [...validateField(field, label), ...getCustomFieldErrors(field)];
@@ -323,9 +335,7 @@ function showFormErrors(errors) {
             list.appendChild(item);
         });
         formErrors.appendChild(list);
-        
-        // jQuery анимация для показа ошибок
-        $('#form-errors').hide().removeClass('d-none').slideDown(400);
+
         formErrors.hidden = false;
     } else {
         Object.values(fieldMap).forEach(field => {
@@ -344,24 +354,17 @@ function createTextElement(tagName, className, text) {
 
 function createResultCard() {
     const card = document.createElement("div");
-    card.className = `result-card result-${colorInput.value}`;
+    card.className = `result-character-card result-${colorInput.value}`;
 
-    const title = createTextElement("h3", "result-name", nameInput.value.trim());
-    const role = createTextElement("p", "result-class", `Class: ${classInput.value}`);
-    const color = createTextElement("p", "result-color", `Color: ${COLOR_NAMES[colorInput.value] || colorInput.value}`);
-    const total = createTextElement("p", "result-total", `Total skill points: ${getSkillTotal()}`);
-    const skills = createTextElement("ul", "result-skills", "");
+    const title = createTextElement("h3", "result-name", `✔ ${nameInput.value.trim()} Added to Archive`);
+    const role = createTextElement("p", "result-class", `Class: ${classInput.value.toUpperCase()} • Crest: ${COLOR_NAMES[colorInput.value] || colorInput.value}`);
+    const link = createTextElement("a", "result-archive-link", "View in DiMeo Family Archive →");
+    link.href = "family-database.html";
 
-    Object.entries(getSkillValues()).forEach(function ([skill, value]) {
-        const item = createTextElement("li", "", `${skill.charAt(0).toUpperCase() + skill.slice(1)}: ${value}`);
-        skills.appendChild(item);
-    });
-
-    card.append(title, role, color, total, skills);
+    card.append(title, role, link);
     return card;
 }
 
-// Сохранение персонажа в localStorage
 function saveCustomCharacter(charData) {
     try {
         const stored = localStorage.getItem(STORAGE_KEY);
@@ -374,6 +377,7 @@ function saveCustomCharacter(charData) {
 }
 
 allFields.forEach(function (field) {
+    if (!field) return;
     field.addEventListener("input", function () {
         updatePreview();
         updateRelatedValidation(field);
@@ -406,13 +410,22 @@ form.addEventListener("submit", function (event) {
         return;
     }
 
-    // Сохраняем нового персонажа
+    const skills = getSkillValues();
+    const roleTitle = classInput.value.charAt(0).toUpperCase() + classInput.value.slice(1);
+    const colorTitle = COLOR_NAMES[colorInput.value] || colorInput.value;
+    const selectedPortrait = portraitInput ? portraitInput.value : "images/soprano7.jpeg";
+
     const newCharacter = {
         id: "custom-" + Date.now(),
         name: nameInput.value.trim(),
-        role: classInput.value.charAt(0).toUpperCase() + classInput.value.slice(1),
-        family: "Custom Family",
+        role: roleTitle,
+        family: "DiMeo / Custom",
         seasons: 1,
+        image: selectedPortrait,
+        status: `Active ${roleTitle} (${colorTitle} Crest)`,
+        quote: "Loyalty and respect keep the family running.",
+        bio: `Custom ${roleTitle} created in the Family Workshop with ${TOTAL_SKILL_POINTS} allocated skill points.`,
+        skills: skills,
         isLeadCharacter: classInput.value === "boss" || classInput.value === "underboss",
         isCustom: true
     };

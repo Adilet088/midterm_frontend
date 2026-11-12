@@ -1,655 +1,372 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sopranos — Official Fan Archive</title>
 
-    <title>The Sopranos</title>
-
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">THE SOPRANOS</a>
 
-        <a class="navbar-brand" href="#home">THE SOPRANOS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mainNavbar"
-            aria-controls="mainNavbar"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="characters.html">Characters</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#seasons">Seasons</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
 
-            <span class="navbar-toggler-icon"></span>
-        </button>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="interactiveDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Interactive
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                            <li><a class="dropdown-item" href="game.html">Rating Mini-Game</a></li>
+                            <li><a class="dropdown-item" href="family-database.html">The DiMeo Family Archive</a></li>
+                            <li><a class="dropdown-item" href="character-creator.html">Build a Soldier / Member</a></li>
+                        </ul>
+                    </li>
 
-        <div class="collapse navbar-collapse" id="mainNavbar">
-
-            <ul class="navbar-nav ms-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">About</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="characters.html">Characters</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#seasons">Seasons</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#gallery">Gallery</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact</a>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        id="interactiveDropdown"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Interactive
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-
-                        <li>
-                            <a class="dropdown-item" href="game.html">
-                                Rating Mini-Game
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item" href="family-database.html">
-                                The DiMeo Family Archive
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item" href="character-creator.html">
-                                Build a Soldier / Member
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-
-            </ul>
-
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <button id="themeToggle" class="btn btn-sm btn-outline-light" type="button" aria-label="Toggle color theme">
+                            🥃 Soprano Noir
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-
+    </nav>
+</header>
 
 <main>
-
     <section id="home" class="hero-section">
-
         <div class="container text-center">
-
             <p class="hero-label">FAMILY • LOYALTY • POWER</p>
-
             <h1>THE SOPRANOS</h1>
-
             <p class="hero-description">
-                A story about Tony Soprano,
-                his family and his life in New Jersey.
+                A story about Tony Soprano, his family and his life in New Jersey.
             </p>
-
-            <a href="#about" class="btn hero-button">
-                Explore the Series
-            </a>
-
+            <a href="#about" class="btn hero-button">Explore the Series</a>
         </div>
-
     </section>
-
 
     <section id="about" class="py-5">
-
         <div class="container">
-
             <div class="row align-items-center g-4">
-
                 <div class="col-12 col-md-6">
-
                     <p class="section-label">THE STORY</p>
-
                     <h2>About The Sopranos</h2>
-
                     <p>
-                        The Sopranos is a television series about Tony Soprano,
-                        his family and his life in New Jersey.
+                        The Sopranos is a television series about Tony Soprano, his family and his life in New Jersey.
                     </p>
-
                     <p>
-                        The story follows Tony as he tries to balance
-                        his family life and his work.
+                        The story follows Tony as he tries to balance his family life and his work.
                     </p>
-
                     <p class="text-secondary">
-                        Created by David Chase, the show became one of the
-                        most influential television dramas of its era.
+                        Created by David Chase, the show became one of the most influential television dramas of its era.
                     </p>
-
                 </div>
 
                 <div class="col-12 col-md-6">
-
                     <div class="about-box">
-
                         <p class="section-label">THE SERIES</p>
-
                         <h3>Drama • Crime • Family</h3>
-
                         <p>
-                            A story about power, relationships,
-                            loyalty and the difficult balance between
-                            family and professional life.
+                            A story about power, relationships, loyalty and the difficult balance between family and professional life.
                         </p>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
-
     <section id="characters" class="py-5">
-
         <div class="container">
-
             <div class="section-heading text-center">
-
                 <p class="section-label">MEET THE FAMILY</p>
-
                 <h2>Characters</h2>
-
-                <p>
-                    The people who shape Tony Soprano's world.
-                </p>
-
+                <p>The people who shape Tony Soprano's world.</p>
             </div>
 
             <div class="characters-grid">
+                <article class="character-card">
+                    <div class="card-top">
+                        <img src="images/tony.jpeg" alt="Tony Soprano" class="card-avatar">
+                        <div>
+                            <span class="character-number">01 • BOSS</span>
+                            <h3>Tony Soprano</h3>
+                        </div>
+                    </div>
+                    <p>Head of the Soprano family and the central character of the series.</p>
+                </article>
 
-                <div class="character-card">
+                <article class="character-card">
+                    <div class="card-top">
+                        <img src="images/carmela.png" alt="Carmela Soprano" class="card-avatar">
+                        <div>
+                            <span class="character-number">02 • MATRIARCH</span>
+                            <h3>Carmela Soprano</h3>
+                        </div>
+                    </div>
+                    <p>Tony's wife and an important part of the Soprano family.</p>
+                </article>
 
-                    <span class="character-number">01</span>
+                <article class="character-card">
+                    <div class="card-top">
+                        <img src="images/cristofer.jpeg" alt="Christopher Moltisanti" class="card-avatar">
+                        <div>
+                            <span class="character-number">03 • PROTEGE</span>
+                            <h3>Christopher Moltisanti</h3>
+                        </div>
+                    </div>
+                    <p>Tony's nephew and an important member of his organization.</p>
+                </article>
 
-                    <h3>Tony Soprano</h3>
+                <article class="character-card">
+                    <div class="card-top">
+                        <img src="images/polly.jpeg" alt="Paulie Gualtieri" class="card-avatar">
+                        <div>
+                            <span class="character-number">04 • CAPO</span>
+                            <h3>Paulie Gualtieri</h3>
+                        </div>
+                    </div>
+                    <p>A longtime member of Tony's crew.</p>
+                </article>
 
-                    <p>
-                        Head of the Soprano family and the central
-                        character of the series.
-                    </p>
+                <article class="character-card">
+                    <div class="card-top">
+                        <img src="images/silvio.jpeg" alt="Silvio Dante" class="card-avatar">
+                        <div>
+                            <span class="character-number">05 • CONSIGLIERE</span>
+                            <h3>Silvio Dante</h3>
+                        </div>
+                    </div>
+                    <p>Tony's close friend and trusted associate.</p>
+                </article>
 
-                </div>
-
-                <div class="character-card">
-
-                    <span class="character-number">02</span>
-
-                    <h3>Carmela Soprano</h3>
-
-                    <p>
-                        Tony's wife and an important part of
-                        the Soprano family.
-                    </p>
-
-                </div>
-
-                <div class="character-card">
-
-                    <span class="character-number">03</span>
-
-                    <h3>Christopher Moltisanti</h3>
-
-                    <p>
-                        Tony's nephew and an important member
-                        of his organization.
-                    </p>
-
-                </div>
-
-                <div class="character-card">
-
-                    <span class="character-number">04</span>
-
-                    <h3>Paulie Gualtieri</h3>
-
-                    <p>
-                        A longtime member of Tony's crew.
-                    </p>
-
-                </div>
-
-                <div class="character-card">
-
-                    <span class="character-number">05</span>
-
-                    <h3>Silvio Dante</h3>
-
-                    <p>
-                        Tony's close friend and trusted associate.
-                    </p>
-
-                </div>
-
-                <div class="character-card">
-
-                    <span class="character-number">06</span>
-
-                    <h3>Junior Soprano</h3>
-
-                    <p>
-                        Tony's uncle and the official boss
-                        of the family.
-                    </p>
-
-                </div>
-
+                <article class="character-card">
+                    <div class="card-top">
+                        <img src="images/junior.webp" alt="Junior Soprano" class="card-avatar">
+                        <div>
+                            <span class="character-number">06 • UNCLE</span>
+                            <h3>Junior Soprano</h3>
+                        </div>
+                    </div>
+                    <p>Tony's uncle and the official boss of the family.</p>
+                </article>
             </div>
-
         </div>
-
     </section>
-
 
     <section id="seasons" class="py-5">
-
         <div class="container">
-
             <div class="section-heading text-center">
-
                 <p class="section-label">THE STORY CONTINUES</p>
-
                 <h2>Seasons</h2>
-
-                <p>
-                    Six seasons following the life of Tony Soprano
-                    and his family.
-                </p>
-
+                <p>Six seasons following the life of Tony Soprano and his family.</p>
             </div>
 
             <div class="row g-4">
-
                 <div class="col-12 col-md-6 col-lg-4">
-
-                    <div class="season-card h-100">
-
-                        <span>01</span>
-
-                        <h3>Season 1</h3>
-
-                        <p>
-                            Tony begins dealing with problems
-                            in his family and professional life.
-                        </p>
-
-                    </div>
-
+                    <article class="season-card h-100">
+                        <div class="season-banner">
+                            <img src="images/season1.jpeg" alt="Season 1">
+                            <span class="season-rating">★ 8.5 / 10</span>
+                        </div>
+                        <div class="season-body">
+                            <div class="season-meta"><span>01</span><small>1999 • 13 Episodes</small></div>
+                            <h3>Season 1</h3>
+                            <p>Tony begins dealing with panic attacks, therapy with Dr. Melfi, and power struggles with Uncle Junior.</p>
+                            <div class="season-highlight">Key Episode: <span>"College"</span></div>
+                        </div>
+                    </article>
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-4">
-
-                    <div class="season-card h-100">
-
-                        <span>02</span>
-
-                        <h3>Season 2</h3>
-
-                        <p>
-                            Tony faces new challenges and
-                            conflicts around him.
-                        </p>
-
-                    </div>
-
+                    <article class="season-card h-100">
+                        <div class="season-banner">
+                            <img src="images/season2.webp" alt="Season 2">
+                            <span class="season-rating">★ 8.7 / 10</span>
+                        </div>
+                        <div class="season-body">
+                            <div class="season-meta"><span>02</span><small>2000 • 13 Episodes</small></div>
+                            <h3>Season 2</h3>
+                            <p>Richie Aprile returns from prison and Tony uncovers a devastating betrayal inside his closest circle.</p>
+                            <div class="season-highlight">Key Episode: <span>"Funhouse"</span></div>
+                        </div>
+                    </article>
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-4">
-
-                    <div class="season-card h-100">
-
-                        <span>03</span>
-
-                        <h3>Season 3</h3>
-
-                        <p>
-                            Relationships and conflicts
-                            become more complicated.
-                        </p>
-
-                    </div>
-
+                    <article class="season-card h-100">
+                        <div class="season-banner">
+                            <img src="images/season3.jpeg" alt="Season 3">
+                            <span class="season-rating">★ 8.8 / 10</span>
+                        </div>
+                        <div class="season-body">
+                            <div class="season-meta"><span>03</span><small>2001 • 13 Episodes</small></div>
+                            <h3>Season 3</h3>
+                            <p>The FBI closes in on the Soprano household while Ralph Cifaretto brings chaos to the crew.</p>
+                            <div class="season-highlight">Key Episode: <span>"Pine Barrens"</span></div>
+                        </div>
+                    </article>
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-4">
-
-                    <div class="season-card h-100">
-
-                        <span>04</span>
-
-                        <h3>Season 4</h3>
-
-                        <p>
-                            Family tensions and personal
-                            struggles become more intense.
-                        </p>
-
-                    </div>
-
+                    <article class="season-card h-100">
+                        <div class="season-banner">
+                            <img src="images/season4.jpg" alt="Season 4">
+                            <span class="season-rating">★ 8.4 / 10</span>
+                        </div>
+                        <div class="season-body">
+                            <div class="season-meta"><span>04</span><small>2002 • 13 Episodes</small></div>
+                            <h3>Season 4</h3>
+                            <p>Economic downturn strains the family business as Tony and Carmela's marriage reaches a breaking point.</p>
+                            <div class="season-highlight">Key Episode: <span>"Whitecaps"</span></div>
+                        </div>
+                    </article>
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-4">
-
-                    <div class="season-card h-100">
-
-                        <span>05</span>
-
-                        <h3>Season 5</h3>
-
-                        <p>
-                            Old relationships and new conflicts
-                            create pressure around Tony.
-                        </p>
-
-                    </div>
-
+                    <article class="season-card h-100">
+                        <div class="season-banner">
+                            <img src="images/season5.webp" alt="Season 5">
+                            <span class="season-rating">★ 8.7 / 10</span>
+                        </div>
+                        <div class="season-body">
+                            <div class="season-meta"><span>05</span><small>2004 • 13 Episodes</small></div>
+                            <h3>Season 5</h3>
+                            <p>Tony Blundetto's release sparks a brutal war between New Jersey and the Lupertazzi family in New York.</p>
+                            <div class="season-highlight">Key Episode: <span>"Long Term Parking"</span></div>
+                        </div>
+                    </article>
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-4">
-
-                    <div class="season-card h-100">
-
-                        <span>06</span>
-
-                        <h3>Season 6</h3>
-
-                        <p>
-                            Tony and his family face the final
-                            stage of their story.
-                        </p>
-
-                    </div>
-
+                    <article class="season-card h-100">
+                        <div class="season-banner">
+                            <img src="images/season6.jpg" alt="Season 6">
+                            <span class="season-rating">★ 8.7 / 10</span>
+                        </div>
+                        <div class="season-body">
+                            <div class="season-meta"><span>06</span><small>2006–2007 • 21 Episodes</small></div>
+                            <h3>Season 6</h3>
+                            <p>The two-part final chapter brings total war with Phil Leotardo and one of TV's most iconic endings.</p>
+                            <div class="season-highlight">Key Episode: <span>"Made in America"</span></div>
+                        </div>
+                    </article>
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 
     <section id="gallery" class="py-5">
-
         <div class="container">
-
             <div class="section-heading text-center">
-
                 <p class="section-label">MOMENTS</p>
-
                 <h2>Gallery</h2>
-
             </div>
 
             <div class="row g-4">
-
                 <div class="col-12 col-md-6 col-lg-4">
-
-                    <img
-                        src="images/soprano1.webp"
-                        alt="Tony Soprano and his crew"
-                        class="img-fluid gallery-img">
-
+                    <img src="images/soprano1.webp" alt="Tony Soprano and his crew" class="img-fluid gallery-img">
                 </div>
-
                 <div class="col-12 col-md-6 col-lg-4">
-
-                    <img
-                        src="images/soprano2.avif"
-                        alt="The Soprano family"
-                        class="img-fluid gallery-img">
-
+                    <img src="images/soprano2.avif" alt="The Soprano family" class="img-fluid gallery-img">
                 </div>
-
                 <div class="col-12 col-md-6 col-lg-4">
-
-                    <img
-                        src="images/soprano3.webp"
-                        alt="Silvio, Tony and Paulie"
-                        class="img-fluid gallery-img">
-
+                    <img src="images/soprano3.webp" alt="Silvio, Tony and Paulie" class="img-fluid gallery-img">
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
-
-    <!-- UPDATED CONTACT FORM -->
-
     <section id="contact" class="py-5">
-
         <div class="container">
-
             <div class="section-heading text-center">
-
                 <p class="section-label">GET IN TOUCH</p>
-
                 <h2>Contact</h2>
-
-                <p>
-                    Have something to say about the series?
-                    Send us a message.
-                </p>
-
+                <p>Have something to say about the series? Send us a message.</p>
             </div>
 
             <div class="row justify-content-center">
-
                 <div class="col-12 col-md-8">
-
                     <form id="contactForm" novalidate>
-
                         <div class="mb-3">
-
-                            <label for="name" class="form-label">
-                                Full Name
-                            </label>
-
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="name"
-                                name="name"
-                                placeholder="Enter your name"
-                                required>
-
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
                             <div class="invalid-feedback"></div>
-
                         </div>
 
-
                         <div class="mb-3">
-
-                            <label for="email" class="form-label">
-                                Email
-                            </label>
-
-                            <input
-                                type="email"
-                                class="form-control"
-                                id="email"
-                                name="email"
-                                placeholder="Enter your email"
-                                required>
-
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
                             <div class="invalid-feedback"></div>
-
                         </div>
 
-
                         <div class="mb-3">
-
-                            <label for="phone" class="form-label">
-                                Phone Number
-                            </label>
-
-                            <input
-                                type="tel"
-                                class="form-control"
-                                id="phone"
-                                name="phone"
-                                placeholder="+7 777 123 4567"
-                                required>
-
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="+7 777 123 4567" required>
                             <div class="invalid-feedback"></div>
-
                         </div>
 
-
                         <div class="mb-3">
-
-                            <label for="eventDate" class="form-label">
-                                Event Date
-                            </label>
-
-                            <input
-                                type="date"
-                                class="form-control"
-                                id="eventDate"
-                                name="eventDate"
-                                required>
-
+                            <label for="eventDate" class="form-label">Event Date</label>
+                            <input type="date" class="form-control" id="eventDate" name="eventDate" required>
                             <div class="invalid-feedback"></div>
-
                         </div>
 
-
                         <div class="mb-3">
-
-                            <label for="guests" class="form-label">
-                                Number of Guests
-                            </label>
-
-                            <input
-                                type="number"
-                                class="form-control"
-                                id="guests"
-                                name="guests"
-                                placeholder="Enter number of guests"
-                                min="1"
-                                max="10"
-                                required>
-
+                            <label for="guests" class="form-label">Number of Guests</label>
+                            <input type="number" class="form-control" id="guests" name="guests" placeholder="Enter number of guests" min="1" max="10" required>
                             <div class="invalid-feedback"></div>
-
                         </div>
 
-
                         <div class="mb-3">
-
-                            <label for="message" class="form-label">
-                                Message
-                            </label>
-
-                            <textarea
-                                class="form-control"
-                                id="message"
-                                name="message"
-                                rows="4"
-                                placeholder="Write your message"
-                                required></textarea>
-
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Write your message" required></textarea>
                             <div class="invalid-feedback"></div>
-
                         </div>
 
+                        <button type="submit" class="btn submit-button">Send Message</button>
 
-                        <button type="submit" class="btn submit-button">
-                            Send Message
-                        </button>
-
-
-                        <div
-                            id="formSuccess"
-                            class="alert alert-success mt-3 d-none"
-                            role="status"
-                            aria-live="polite">
-
+                        <div id="formSuccess" class="alert alert-success mt-3 d-none" role="status" aria-live="polite">
                             Your message has been sent successfully!
-
                         </div>
-
                     </form>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 </main>
 
-
-<footer>
-
+<footer class="site-footer">
     <div class="container text-center">
-
         <h3>THE SOPRANOS</h3>
-
-        <p>
-            Family • Loyalty • Power
-        </p>
-
-        <small>
-            The Sopranos
-        </small>
-
+        <p>Family • Loyalty • Power</p>
+        <small>&copy; Built by Duisekenov Adilet</small>
     </div>
-
 </footer>
 
+<button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">&uarr; Top</button>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <script src="js/contact.js"></script>
 <script src="js/main.js"></script>
-<button id="backToTop" style="display: none; position: fixed; bottom: 30px; right: 30px; z-index: 999; background-color: #7a1f2b; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">↑ Top</button>
 </body>
-
 </html>

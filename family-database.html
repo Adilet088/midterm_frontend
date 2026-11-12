@@ -1,213 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Family Database | The Sopranos</title>
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/interactive.css">
+    <link rel="stylesheet" href="css/database.css">
 
-    <link rel="stylesheet" href="css/assignment5.css">
-    <link rel="stylesheet" href="css/task2.css">
-
-    <script src="js/task2.js" defer></script>
+    <script src="js/database.js" defer></script>
 </head>
 
 <body class="assignment-page database-page">
 
-    <nav class="navbar navbar-expand-lg navbar-dark">
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
+            <a class="navbar-brand" href="index.html">THE SOPRANOS</a>
 
-            <a class="navbar-brand" href="index.html">
-                THE SOPRANOS
-            </a>
-
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#mainNavbar"
-                aria-controls="mainNavbar"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="mainNavbar">
-
-                <ul class="navbar-nav ms-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            Home
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="characters.html">
-                            Characters
-                        </a>
-                    </li>
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="characters.html">Characters</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#seasons">Seasons</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
 
                     <li class="nav-item dropdown">
-
-                        <a
-                            class="nav-link dropdown-toggle active"
-                            href="#"
-                            id="interactiveDropdown"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false">
-
+                        <a class="nav-link dropdown-toggle active" href="#" id="interactiveDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Interactive
                         </a>
-
                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-
-                            <li>
-                                <a class="dropdown-item" href="game.html">
-                                    Rating Mini-Game
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="family-database.html">
-                                    The DiMeo Family Archive
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="character-creator.html">
-                                    Build a Soldier / Member
-                                </a>
-                            </li>
-
+                            <li><a class="dropdown-item" href="game.html">Rating Mini-Game</a></li>
+                            <li><a class="dropdown-item active" href="family-database.html">The DiMeo Family Archive</a></li>
+                            <li><a class="dropdown-item" href="character-creator.html">Build a Soldier / Member</a></li>
                         </ul>
                     </li>
 
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <button id="themeToggle" class="btn btn-sm btn-outline-light" type="button" aria-label="Toggle color theme">
+                            🥃 Soprano Noir
+                        </button>
+                    </li>
                 </ul>
-
             </div>
         </div>
     </nav>
+</header>
 
-    <main class="database-container">
+<main class="database-container">
+    <header class="database-header">
+        <p class="database-eyebrow">THE SOPRANOS ARCHIVE</p>
+        <h1>Family Database</h1>
+        <p>
+            Explore the characters, inspect their dossiers, and pin up to three key members of the family.
+        </p>
+    </header>
 
-        <a href="index.html" class="database-back-link">
-            &larr; Back to main page
-        </a>
+    <section class="database-statistics" aria-label="Database statistics">
+        <div class="database-stat">
+            <span class="database-stat-label">Characters</span>
+            <strong id="total-characters">0</strong>
+        </div>
 
-        <header class="database-header">
+        <div class="database-stat">
+            <span class="database-stat-label">Main Characters</span>
+            <strong id="lead-characters">0</strong>
+        </div>
 
-            <p class="database-eyebrow">
-                THE SOPRANOS ARCHIVE
-            </p>
+        <div class="database-stat">
+            <span class="database-stat-label">Average Seasons</span>
+            <strong id="average-seasons">0</strong>
+        </div>
 
-            <h1>Family Database</h1>
+        <div class="database-stat">
+            <span class="database-stat-label">Favorites</span>
+            <strong id="favorite-count">0 / 3</strong>
+        </div>
+    </section>
 
-            <p>
-                Explore the characters, discover their roles
-                and choose your favorite members of the family.
-            </p>
-
-        </header>
-
-        <section
-            class="database-statistics"
-            aria-label="Database statistics">
-
-            <div class="database-stat">
-                <span class="database-stat-label">Characters</span>
-                <strong id="total-characters">0</strong>
-            </div>
-
-            <div class="database-stat">
-                <span class="database-stat-label">Main Characters</span>
-                <strong id="lead-characters">0</strong>
-            </div>
-
-            <div class="database-stat">
-                <span class="database-stat-label">Average Seasons</span>
-                <strong id="average-seasons">0</strong>
-            </div>
-
-            <div class="database-stat">
-                <span class="database-stat-label">Favorites</span>
-                <strong id="favorite-count">0 / 3</strong>
-            </div>
-
-        </section>
-
-        <section class="database-panel">
-
-            <div class="row g-3 mb-3">
-                <div class="col-12 col-md-8">
-                    <div class="database-search mb-0">
-                        <label for="character-search">
-                            Search characters
-                        </label>
-                        <input
-                            type="search"
-                            id="character-search"
-                            placeholder="Search by name, role or family..."
-                            autocomplete="off">
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-4">
-                    <label for="character-filter" class="form-label text-white font-weight-bold">
-                        Filter by type
-                    </label>
-                    <select id="character-filter" class="form-select bg-dark text-white border-secondary h-auto py-2">
-                        <option value="all">All Characters</option>
-                        <option value="lead">Main Characters</option>
-                        <option value="supporting">Supporting Characters</option>
-                        <option value="custom">Custom Created</option>
-                    </select>
+    <section class="database-panel">
+        <div class="row g-3 align-items-end mb-3">
+            <div class="col-12 col-md-6">
+                <div class="database-search mb-0">
+                    <label for="character-search">Search characters</label>
+                    <input type="search" id="character-search" placeholder="Search by name, role or family..." autocomplete="off">
                 </div>
             </div>
 
-            <div class="d-flex justify-content-end mb-3">
-                <button id="reset-custom-btn" class="btn btn-outline-danger btn-sm" type="button">
-                    Clear Created Characters
+            <div class="col-12 col-sm-7 col-md-3">
+                <label for="character-filter" class="form-label fw-bold mb-2">Filter by type</label>
+                <select id="character-filter" class="form-select bg-dark text-white border-secondary py-2">
+                    <option value="all">All Characters</option>
+                    <option value="lead">Main Characters</option>
+                    <option value="supporting">Supporting Characters</option>
+                    <option value="custom">Custom Created</option>
+                </select>
+            </div>
+
+            <div class="col-12 col-sm-5 col-md-3 text-sm-end">
+                <button id="reset-custom-btn" class="btn btn-outline-danger w-100 py-2" type="button">
+                    Clear Created
                 </button>
             </div>
+        </div>
 
-            <p
-                id="database-message"
-                class="database-message"
-                role="status"
-                aria-live="polite">
-            </p>
+        <p id="database-message" class="database-message" role="status" aria-live="polite"></p>
 
-            <div
-                id="character-list"
-                class="character-grid"
-                aria-label="Character list">
+        <div id="character-list" class="character-grid" aria-label="Character list"></div>
+
+        <p id="no-results" class="no-results" hidden>
+            No characters found. Try another search.
+        </p>
+    </section>
+
+    <!-- Character Dossier Modal -->
+    <div id="dossier-modal" class="dossier-modal" hidden role="dialog" aria-modal="true" aria-labelledby="dossier-name">
+        <div class="dossier-dialog">
+            <button type="button" id="dossier-close" class="dossier-close" aria-label="Close dossier">&times;</button>
+            <div class="dossier-header">
+                <img id="dossier-avatar" src="images/tony.jpeg" alt="" class="dossier-avatar" hidden>
+                <div>
+                    <span id="dossier-role" class="character-role">Role</span>
+                    <h2 id="dossier-name" class="dossier-title">Character Name</h2>
+                </div>
             </div>
+            <div class="dossier-meta">
+                <p><strong>Family / Affiliation:</strong> <span id="dossier-family"></span></p>
+                <p><strong>Status:</strong> <span id="dossier-status"></span></p>
+                <p><strong>Appearances:</strong> <span id="dossier-seasons"></span></p>
+            </div>
+            <p id="dossier-bio" class="dossier-bio"></p>
+            <blockquote id="dossier-quote" class="dossier-quote"></blockquote>
+            <div id="dossier-skills" class="dossier-skills" hidden></div>
+        </div>
+    </div>
+</main>
 
-            <p id="no-results" class="no-results" hidden>
-                No characters found. Try another search.
-            </p>
-
-        </section>
-
-    </main>
-
-    <footer class="assignment-footer">
+<footer class="site-footer">
+    <div class="container text-center">
         <h3>THE SOPRANOS</h3>
         <p>Family • Loyalty • Power</p>
-    </footer>
+        <small>&copy; Built by Duisekenov Adilet</small>
+    </div>
+</footer>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
+<button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">&uarr;</button>
 
-    <button id="backToTop" style="display: none; position: fixed; bottom: 30px; right: 30px; z-index: 999; background-color: #7a1f2b; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">↑ Top</button>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

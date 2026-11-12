@@ -1,452 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Character Creator | The Sopranos</title>
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/interactive.css">
+    <link rel="stylesheet" href="css/creator.css">
 
-    <link rel="stylesheet" href="css/assignment5.css">
-    <link rel="stylesheet" href="css/task3.css">
-
-    <script src="js/task3.js" defer></script>
+    <script src="js/creator.js" defer></script>
 </head>
 
 <body class="assignment-page creator-page">
 
-    <nav class="navbar navbar-expand-lg navbar-dark">
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
+            <a class="navbar-brand" href="index.html">THE SOPRANOS</a>
 
-            <a class="navbar-brand" href="index.html">
-                THE SOPRANOS
-            </a>
-
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#mainNavbar"
-                aria-controls="mainNavbar"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="mainNavbar">
-
-                <ul class="navbar-nav ms-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            Home
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="characters.html">
-                            Characters
-                        </a>
-                    </li>
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="characters.html">Characters</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#seasons">Seasons</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
 
                     <li class="nav-item dropdown">
-
-                        <a
-                            class="nav-link dropdown-toggle active"
-                            href="#"
-                            id="interactiveDropdown"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false">
-
+                        <a class="nav-link dropdown-toggle active" href="#" id="interactiveDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Interactive
                         </a>
-
                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-
-                            <li>
-                                <a class="dropdown-item" href="game.html">
-                                    Rating Mini-Game
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="family-database.html">
-                                    The DiMeo Family Archive
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="character-creator.html">
-                                    Build a Soldier / Member
-                                </a>
-                            </li>
-
+                            <li><a class="dropdown-item" href="game.html">Rating Mini-Game</a></li>
+                            <li><a class="dropdown-item" href="family-database.html">The DiMeo Family Archive</a></li>
+                            <li><a class="dropdown-item active" href="character-creator.html">Build a Soldier / Member</a></li>
                         </ul>
                     </li>
 
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <button id="themeToggle" class="btn btn-sm btn-outline-light" type="button" aria-label="Toggle color theme">
+                            🥃 Soprano Noir
+                        </button>
+                    </li>
                 </ul>
-
             </div>
         </div>
     </nav>
+</header>
 
-    <main class="creator-container">
+<main class="creator-container">
+    <header class="creator-header">
+        <p class="creator-eyebrow">BUILD YOUR OWN CHARACTER</p>
+        <h1>Character Creator</h1>
+        <p>
+            Create a new member of the family. Choose your role, crest color, and distribute your 20 skill points wisely.
+        </p>
+    </header>
 
-        <a href="index.html" class="creator-back-link">
-            &larr; Back to main page
-        </a>
-
-        <header class="creator-header">
-
-            <p class="creator-eyebrow">
-                BUILD YOUR OWN CHARACTER
+    <div class="creator-layout">
+        <section class="creator-panel">
+            <h2>Create Your Character</h2>
+            <p class="creator-description">
+                Complete every field and allocate exactly 20 skill points.
             </p>
 
-            <h1>Character Creator</h1>
+            <form id="character-form">
+                <div id="form-errors" class="form-errors" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
 
-            <p>
-                Create a new member of the family.
-                Choose your role and distribute your skill points wisely.
-            </p>
+                <div class="form-field">
+                    <label for="character-name">Character Name</label>
+                    <input type="text" id="character-name" name="characterName" minlength="2" maxlength="30" pattern="[A-Za-z][A-Za-z '-]*" required autocomplete="off" placeholder="e.g. Furio Giunta" aria-describedby="character-name-error">
+                    <small id="character-name-error" class="field-error" hidden></small>
+                </div>
 
-        </header>
-
-        <div class="creator-layout">
-
-            <section class="creator-panel">
-
-                <h2>Create Your Character</h2>
-
-                <p class="creator-description">
-                    Complete every field and use exactly 20 skill points.
-                </p>
-
-                <form id="character-form">
-
-                    <div
-                        id="form-errors"
-                        class="form-errors"
-                        role="alert"
-                        aria-live="assertive"
-                        tabindex="-1"
-                        hidden>
+                <div class="row g-3">
+                    <div class="col-12 col-sm-6">
+                        <div class="form-field">
+                            <label for="character-class">Character Class</label>
+                            <select id="character-class" name="characterClass" required aria-describedby="character-class-error">
+                                <option value="">Choose a class</option>
+                                <option value="boss">Boss (Leadership &ge; 5)</option>
+                                <option value="underboss">Underboss (Intelligence &ge; 5)</option>
+                                <option value="enforcer">Enforcer (Strength &ge; 5)</option>
+                                <option value="consigliere">Consigliere (Loyalty &ge; 5)</option>
+                            </select>
+                            <small id="character-class-error" class="field-error" hidden></small>
+                        </div>
                     </div>
 
-                    <!-- Character name -->
+                    <div class="col-12 col-sm-6">
+                        <div class="form-field">
+                            <label for="character-color">Crest Color</label>
+                            <select id="character-color" name="characterColor" required aria-describedby="character-color-error">
+                                <option value="">Choose a color</option>
+                                <option value="crimson">Crimson Red</option>
+                                <option value="gold">Gold</option>
+                                <option value="black">Obsidian Black</option>
+                                <option value="ivory">Ivory</option>
+                            </select>
+                            <small id="character-color-error" class="field-error" hidden></small>
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="form-field">
+                <div class="form-field">
+                    <label for="character-portrait">Portrait Archetype</label>
+                    <select id="character-portrait" name="characterPortrait">
+                        <option value="images/soprano7.jpeg">North Jersey Boss</option>
+                        <option value="images/soprano4.jpg">Bada Bing Enforcer</option>
+                        <option value="images/soprano8.jpg">New York Consigliere</option>
+                        <option value="images/soprano9.jpg">Old-School Capo</option>
+                        <option value="images/soprano6.webp">Young Associate</option>
+                    </select>
+                </div>
 
-                        <label for="character-name">
-                            Character Name
-                        </label>
+                <fieldset class="skills-fieldset">
+                    <legend>Character Skills</legend>
+                    <p class="skills-description">Each skill must be between 1 and 10 (total must equal 20).</p>
 
-                        <input
-                            type="text"
-                            id="character-name"
-                            name="characterName"
-                            minlength="2"
-                            maxlength="30"
-                            pattern="[A-Za-z][A-Za-z '-]*"
-                            required
-                            autocomplete="off"
-                            placeholder="Enter a character name"
-                            aria-describedby="character-name-error">
+                    <div class="row g-3">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-field mb-0">
+                                <label for="strength">Strength</label>
+                                <input type="number" id="strength" name="strength" min="1" max="10" step="1" placeholder="1–10" required aria-describedby="strength-error">
+                                <small id="strength-error" class="field-error" hidden></small>
+                            </div>
+                        </div>
 
-                        <small
-                            id="character-name-error"
-                            class="field-error"
-                            hidden>
-                        </small>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-field mb-0">
+                                <label for="intelligence">Intelligence</label>
+                                <input type="number" id="intelligence" name="intelligence" min="1" max="10" step="1" placeholder="1–10" required aria-describedby="intelligence-error">
+                                <small id="intelligence-error" class="field-error" hidden></small>
+                            </div>
+                        </div>
 
+                        <div class="col-12 col-sm-6">
+                            <div class="form-field mb-0">
+                                <label for="leadership">Leadership</label>
+                                <input type="number" id="leadership" name="leadership" min="1" max="10" step="1" placeholder="1–10" required aria-describedby="leadership-error">
+                                <small id="leadership-error" class="field-error" hidden></small>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6">
+                            <div class="form-field mb-0">
+                                <label for="loyalty">Loyalty</label>
+                                <input type="number" id="loyalty" name="loyalty" min="1" max="10" step="1" placeholder="1–10" required aria-describedby="loyalty-error">
+                                <small id="loyalty-error" class="field-error" hidden></small>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Character class -->
-
-                    <div class="form-field">
-
-                        <label for="character-class">
-                            Character Class
-                        </label>
-
-                        <select
-                            id="character-class"
-                            name="characterClass"
-                            required
-                            aria-describedby="character-class-error">
-
-                            <option value="">Choose a class</option>
-                            <option value="boss">Boss</option>
-                            <option value="underboss">Underboss</option>
-                            <option value="enforcer">Enforcer</option>
-                            <option value="consigliere">Consigliere</option>
-
-                        </select>
-
-                        <small
-                            id="character-class-error"
-                            class="field-error"
-                            hidden>
-                        </small>
-
-                    </div>
-
-                    <!-- Character color -->
-
-                    <div class="form-field">
-
-                        <label for="character-color">
-                            Character Color
-                        </label>
-
-                        <select
-                            id="character-color"
-                            name="characterColor"
-                            required
-                            aria-describedby="character-color-error">
-
-                            <option value="">Choose a color</option>
-                            <option value="crimson">Crimson Red</option>
-                            <option value="gold">Gold</option>
-                            <option value="black">Black</option>
-                            <option value="ivory">Ivory</option>
-
-                        </select>
-
-                        <small
-                            id="character-color-error"
-                            class="field-error"
-                            hidden>
-                        </small>
-
-                    </div>
-
-                    <!-- Skills -->
-
-                    <fieldset class="skills-fieldset">
-
-                        <legend>Character Skills</legend>
-
-                        <p class="skills-description">
-                            Each skill must be between 1 and 10.
-                        </p>
-
-                        <div class="form-field">
-
-                            <label for="strength">Strength</label>
-
-                            <input
-                                type="number"
-                                id="strength"
-                                name="strength"
-                                min="1"
-                                max="10"
-                                step="1"
-                                required
-                                aria-describedby="strength-error">
-
-                            <small
-                                id="strength-error"
-                                class="field-error"
-                                hidden>
-                            </small>
-
-                        </div>
-
-                        <div class="form-field">
-
-                            <label for="intelligence">Intelligence</label>
-
-                            <input
-                                type="number"
-                                id="intelligence"
-                                name="intelligence"
-                                min="1"
-                                max="10"
-                                step="1"
-                                required
-                                aria-describedby="intelligence-error">
-
-                            <small
-                                id="intelligence-error"
-                                class="field-error"
-                                hidden>
-                            </small>
-
-                        </div>
-
-                        <div class="form-field">
-
-                            <label for="leadership">Leadership</label>
-
-                            <input
-                                type="number"
-                                id="leadership"
-                                name="leadership"
-                                min="1"
-                                max="10"
-                                step="1"
-                                required
-                                aria-describedby="leadership-error">
-
-                            <small
-                                id="leadership-error"
-                                class="field-error"
-                                hidden>
-                            </small>
-
-                        </div>
-
-                        <div class="form-field">
-
-                            <label for="loyalty">Loyalty</label>
-
-                            <input
-                                type="number"
-                                id="loyalty"
-                                name="loyalty"
-                                min="1"
-                                max="10"
-                                step="1"
-                                required
-                                aria-describedby="loyalty-error">
-
-                            <small
-                                id="loyalty-error"
-                                class="field-error"
-                                hidden>
-                            </small>
-
-                        </div>
-
-                        <!-- Skill point counters -->
-
+                    <div class="points-summary-box">
                         <div class="points-counter">
                             <span>Points used</span>
                             <strong id="points-used">0 / 20</strong>
                         </div>
-
                         <div class="points-counter">
                             <span>Points remaining</span>
                             <strong id="points-remaining">20</strong>
                         </div>
-
-                        <p
-                            id="skill-points-error"
-                            class="field-error"
-                            role="status"
-                            aria-live="polite"
-                            hidden>
-                        </p>
-
-                    </fieldset>
-
-                    <button
-                        type="submit"
-                        class="creator-submit">
-                        Create Character
-                    </button>
-
-                    <button
-                        type="reset"
-                        class="creator-reset">
-                        Reset Form
-                    </button>
-
-                </form>
-
-            </section>
-
-            <!-- Live preview -->
-
-            <aside class="creator-panel preview-panel">
-
-                <h2>Live Preview</h2>
-
-                <p class="creator-description">
-                    Your character card updates while you type.
-                </p>
-
-                <article
-                    id="character-preview"
-                    class="character-preview preview-color-black">
-
-                    <p class="preview-eyebrow">
-                        THE SOPRANOS FAMILY
-                    </p>
-
-                    <h3 id="preview-name">Your Character</h3>
-
-                    <p
-                        id="preview-class"
-                        class="preview-class">
-                        Not selected
-                    </p>
-
-                    <p class="preview-color-label">
-                        Color:
-                        <span id="preview-color">Not selected</span>
-                    </p>
-
-                    <div class="preview-skills">
-
-                        <p>
-                            Strength:
-                            <strong id="preview-strength">0</strong>
-                        </p>
-
-                        <p>
-                            Intelligence:
-                            <strong id="preview-intelligence">0</strong>
-                        </p>
-
-                        <p>
-                            Leadership:
-                            <strong id="preview-leadership">0</strong>
-                        </p>
-
-                        <p>
-                            Loyalty:
-                            <strong id="preview-loyalty">0</strong>
-                        </p>
-
                     </div>
 
-                    <p class="preview-points">
-                        Total skill points:
-                        <strong id="preview-total">0 / 20</strong>
-                    </p>
+                    <p id="skill-points-error" class="field-error mt-2" role="status" aria-live="polite" hidden></p>
+                </fieldset>
 
-                </article>
+                <div class="creator-actions">
+                    <button type="submit" class="creator-submit">Add to Family Archive</button>
+                    <button type="reset" class="creator-reset">Reset Form</button>
+                </div>
+            </form>
+        </section>
 
-                <!-- Created character result -->
+        <aside class="creator-panel preview-panel">
+            <h2>Live Dossier Preview</h2>
+            <p class="creator-description">
+                Your family dossier updates in real time as you build.
+            </p>
 
-                <section
-                    id="creation-result"
-                    class="creation-result"
-                    aria-live="polite"
-                    hidden>
-                </section>
+            <article id="character-preview" class="character-preview preview-color-black">
+                <div class="preview-header-row">
+                    <img id="preview-avatar" src="images/soprano7.jpeg" alt="Character portrait" class="preview-avatar">
+                    <div>
+                        <p class="preview-eyebrow">DIMEO CRIME FAMILY</p>
+                        <h3 id="preview-name">Your Character</h3>
+                        <div class="preview-badges">
+                            <span id="preview-class" class="preview-class">Not selected</span>
+                            <span class="preview-color-chip">Crest: <strong id="preview-color">Not selected</strong></span>
+                        </div>
+                    </div>
+                </div>
 
-            </aside>
+                <div class="preview-skills">
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-head"><span>Strength</span><strong id="preview-strength">0</strong></div>
+                        <div class="skill-bar-track"><div id="bar-strength" class="skill-bar-fill"></div></div>
+                    </div>
 
-        </div>
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-head"><span>Intelligence</span><strong id="preview-intelligence">0</strong></div>
+                        <div class="skill-bar-track"><div id="bar-intelligence" class="skill-bar-fill"></div></div>
+                    </div>
 
-    </main>
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-head"><span>Leadership</span><strong id="preview-leadership">0</strong></div>
+                        <div class="skill-bar-track"><div id="bar-leadership" class="skill-bar-fill"></div></div>
+                    </div>
 
-    <footer class="assignment-footer">
+                    <div class="skill-bar-row">
+                        <div class="skill-bar-head"><span>Loyalty</span><strong id="preview-loyalty">0</strong></div>
+                        <div class="skill-bar-track"><div id="bar-loyalty" class="skill-bar-fill"></div></div>
+                    </div>
+                </div>
+
+                <p class="preview-points">
+                    <span>Allocated points</span>
+                    <strong id="preview-total">0 / 20</strong>
+                </p>
+            </article>
+
+            <section id="creation-result" class="creation-result" aria-live="polite" hidden></section>
+        </aside>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container text-center">
         <h3>THE SOPRANOS</h3>
         <p>Family • Loyalty • Power</p>
-    </footer>
+        <small>&copy; Built by Duisekenov Adilet</small>
+    </div>
+</footer>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
-<button id="backToTop" style="display: none; position: fixed; bottom: 30px; right: 30px; z-index: 999; background-color: #7a1f2b; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">↑ Top</button>
+<button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">&uarr;</button>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

@@ -1,82 +1,21 @@
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #111111;
-    color: #eeeeee;
-}
-
-section {
-    background-color: #111111;
-    border-top: 1px solid #222222;
-}
-
-h1,
-h2,
-h3 {
-    font-weight: 700;
-}
-
-h2 {
-    font-size: 42px;
-    margin-bottom: 20px;
-}
-
-p {
-    line-height: 1.7;
-}
-
-
-/* NAVBAR */
-
-.navbar {
-    border-bottom: 1px solid #444444;
-}
-
-.navbar-brand {
-    font-weight: 700;
-    letter-spacing: 2px;
-}
-
-.nav-link {
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: #b83246 !important;
-}
-
-
 /* HERO */
 
 .characters-hero {
     min-height: 480px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background:
         linear-gradient(
-            rgba(17, 17, 17, 0.82),
-            rgba(17, 17, 17, 0.96)
+            rgba(12, 10, 18, 0.82),
+            rgba(12, 10, 18, 0.96)
         ),
         url("../images/soprano2.avif");
-
     background-size: cover;
     background-position: center;
-
     text-align: center;
-
     border-top: none;
+    color: #f4f1ea;
 }
 
 .characters-hero h1 {
@@ -85,23 +24,21 @@ p {
     margin: 10px 0 20px;
 }
 
-.hero-label,
-.section-label,
+.characters-hero .hero-description {
+    color: #cccccc;
+}
+
+[data-theme="neon"] .characters-hero h1 {
+    text-shadow: 0 0 25px var(--accent-glow);
+}
+
 .profile-label {
-    color: #b83246;
+    color: var(--accent-bright);
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
 }
-
-.hero-description {
-    max-width: 600px;
-    margin: 0 auto;
-    color: #cccccc;
-    font-size: 20px;
-}
-
 
 /* GENERAL SECTIONS */
 
@@ -112,39 +49,22 @@ p {
     padding-bottom: 80px;
 }
 
-.section-heading {
-    max-width: 700px;
-    margin: 0 auto 45px;
-}
-
-.section-heading h2 {
-    margin-bottom: 10px;
-}
-
-.section-heading > p:last-child {
-    color: #999999;
-}
-
-
 /* TONY PROFILE */
 
 .tony-profile {
     display: grid;
     grid-template-columns: 1fr;
-    background-color: #1b1b1b;
-    border: 1px solid #444444;
-    border-left: 5px solid #7a1f2b;
-
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-left: 5px solid var(--accent-primary);
+    box-shadow: var(--card-shadow);
     overflow: hidden;
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .tony-profile:hover {
     transform: translateY(-5px);
-    border-color: #7a1f2b;
+    border-color: var(--accent-bright);
 }
 
 .tony-image {
@@ -155,7 +75,6 @@ p {
     width: 100%;
     height: 100%;
     min-height: 350px;
-
     object-fit: cover;
     object-position: top center;
     display: block;
@@ -172,57 +91,47 @@ p {
 
 .profile-item {
     padding: 15px 0;
-    border-bottom: 1px solid #333333;
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .profile-item span {
     display: block;
-
     margin-bottom: 5px;
-
-    color: #b83246;
-
+    color: var(--accent-bright);
     font-size: 13px;
     font-weight: 700;
-
     letter-spacing: 2px;
     text-transform: uppercase;
 }
 
 .profile-item p {
     margin: 0;
-    color: #dddddd;
+    color: var(--text-main);
 }
 
 .profile-description {
     margin-top: 25px;
-    color: #aaaaaa;
+    color: var(--text-muted);
 }
-
 
 /* INNER CIRCLE */
 
 .inner-circle {
-    background-color: #151515;
+    background-color: var(--bg-secondary);
 }
 
 .inner-card {
     height: 100%;
-
-    background-color: #1b1b1b;
-
-    border: 1px solid #444444;
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        background-color 0.3s ease;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .inner-card:hover {
     transform: translateY(-7px);
-    border-color: #7a1f2b;
-    background-color: #202020;
+    border-color: var(--accent-bright);
+    background-color: var(--bg-card-hover);
 }
 
 .inner-card-image {
@@ -233,12 +142,9 @@ p {
 .inner-card-image img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
     object-position: top center;
-
     display: block;
-
     transition: transform 0.4s ease;
 }
 
@@ -250,17 +156,10 @@ p {
     padding: 30px;
 }
 
-.inner-card-content.no-image {
-    min-height: 280px;
-}
-
 .inner-card-content > span {
     display: block;
-
     margin-bottom: 20px;
-
-    color: #7a1f2b;
-
+    color: var(--accent-bright);
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -273,60 +172,47 @@ p {
 
 .inner-card-content .role {
     margin-bottom: 15px;
-
-    color: #b83246;
-
+    color: var(--accent-bright);
     font-size: 13px;
     font-weight: 700;
-
     letter-spacing: 2px;
     text-transform: uppercase;
 }
 
 .inner-card-content p:last-child {
     margin: 0;
-    color: #aaaaaa;
+    color: var(--text-muted);
 }
 
-
-/* DIRECTORY */
+/* DIRECTORY TABLE */
 
 .table-wrapper {
     overflow-x: auto;
-
-    border: 1px solid #444444;
+    border: 1px solid var(--border-card);
+    box-shadow: var(--card-shadow);
 }
 
 .character-table {
     width: 100%;
-
     border-collapse: collapse;
-
-    background-color: #1b1b1b;
+    background-color: var(--bg-card);
 }
 
 .character-table th {
     padding: 20px;
-
-    background-color: #202020;
-
-    color: #b83246;
-
+    background-color: var(--bg-card-hover);
+    color: var(--accent-bright);
     font-size: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
-
     text-align: left;
-
-    border-bottom: 1px solid #555555;
+    border-bottom: 1px solid var(--border-card);
 }
 
 .character-table td {
     padding: 18px 20px;
-
-    color: #cccccc;
-
-    border-bottom: 1px solid #333333;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .character-table tbody tr {
@@ -334,46 +220,33 @@ p {
 }
 
 .character-table tbody tr:hover {
-    background-color: #242424;
+    background-color: var(--bg-card-hover);
 }
 
 .character-table tbody tr:last-child td {
     border-bottom: none;
 }
 
-
-/* FOOTER */
-
-footer {
-    padding: 40px 0;
-
-    background-color: #0b0b0b;
-
-    border-top: 1px solid #444444;
+.table-person {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: 600;
 }
 
-footer h3 {
-    margin-bottom: 10px;
-
-    font-size: 20px;
-    letter-spacing: 3px;
+.table-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    border: 2px solid var(--accent-bright);
+    flex-shrink: 0;
 }
 
-footer p {
-    margin-bottom: 8px;
-
-    color: #b83246;
-}
-
-footer small {
-    color: #777777;
-}
-
-
-/* TABLET */
+/* RESPONSIVE */
 
 @media (min-width: 768px) {
-
     .characters-hero h1 {
         font-size: 80px;
     }
@@ -382,21 +255,13 @@ footer small {
         grid-template-columns: 45% 55%;
     }
 
-    .tony-image {
-        min-height: 500px;
-    }
-
+    .tony-image,
     .tony-image img {
         min-height: 500px;
     }
-
 }
 
-
-/* LAPTOP */
-
 @media (min-width: 1200px) {
-
     .characters-hero {
         min-height: 550px;
     }
@@ -408,18 +273,9 @@ footer small {
     .tony-info {
         padding: 55px;
     }
-
 }
 
-
-/* MOBILE */
-
 @media (max-width: 575px) {
-
-    h2 {
-        font-size: 34px;
-    }
-
     .characters-hero {
         min-height: 430px;
         padding: 40px 20px;
@@ -428,15 +284,6 @@ footer small {
     .characters-hero h1 {
         font-size: 48px;
         letter-spacing: 3px;
-    }
-
-    .hero-description {
-        font-size: 17px;
-    }
-
-    .section-label {
-        font-size: 12px;
-        letter-spacing: 2px;
     }
 
     .tony-info {
@@ -451,37 +298,9 @@ footer small {
         padding: 25px;
     }
 
-    .inner-card-content.no-image {
-        min-height: auto;
-    }
-
     .character-table th,
     .character-table td {
         padding: 14px;
         white-space: nowrap;
     }
-
-}
-
-/* === Добавления для корректной валидации (ошибки / успех) и ховеров === */
-.form-control.is-invalid,
-input.field-invalid,
-select.field-invalid {
-    border-color: #ff737f !important;
-    background-color: #2a1518 !important;
-}
-
-.form-control.is-valid,
-input.field-valid,
-select.field-valid {
-    border-color: #75d99a !important;
-}
-
-.invalid-feedback,
-.field-error {
-    display: none;
-    margin-top: 6px;
-    color: #ff737f;
-    font-size: 13px;
-    font-weight: 600;
 }
