@@ -670,3 +670,204 @@ select.field-valid {
     font-size: 13px;
     font-weight: 600;
 }
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+/* =========================================
+   CUSTOM SOPRANOS NAVBAR & DROPDOWN
+   ========================================= */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
+}
+
+.site-header .navbar {
+    background-color: rgba(13, 13, 15, 0.92) !important;
+    backdrop-filter: blur(10px);
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.site-header .navbar-brand {
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--text-main) !important;
+    transition: color 0.25s ease;
+}
+
+.site-header .navbar-brand:hover {
+    color: var(--accent-gold) !important;
+}
+
+/* Плавное подчеркивание ссылок меню */
+.site-header .nav-link {
+    position: relative;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 8px 12px !important;
+    transition: color 0.25s ease;
+}
+
+.site-header .nav-link:not(.dropdown-toggle)::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 2px;
+    height: 2px;
+    background-color: var(--accent-gold);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s ease;
+}
+
+.site-header .nav-link:hover::after,
+.site-header .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+.site-header .nav-link.active {
+    color: var(--accent-gold) !important;
+}
+
+/* Фирменное выпадающее меню вместо серого Bootstrap */
+.site-header .dropdown-menu {
+    background-color: var(--bg-card);
+    border: 1px solid var(--accent-primary);
+    border-radius: 10px;
+    padding: 8px;
+    margin-top: 10px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+}
+
+.site-header .dropdown-item {
+    color: var(--text-main);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 9px 14px;
+    transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+}
+
+.site-header .dropdown-item:hover,
+.site-header .dropdown-item:focus {
+    background-color: var(--bg-card-hover);
+    color: var(--accent-gold);
+    padding-left: 18px;
+}
+
+.site-header .dropdown-item.active {
+    background-color: var(--accent-primary);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* Кнопка переключения темы */
+#themeToggle {
+    border-color: var(--accent-bright);
+    color: var(--text-main);
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 6px 12px;
+    transition: all 0.25s ease;
+}
+
+#themeToggle:hover {
+    background-color: var(--accent-primary);
+    border-color: var(--accent-gold);
+    color: #ffffff;
+    box-shadow: 0 0 14px var(--accent-glow);
+}
+/* =========================================
+   NAVBAR LIGHT THEME ADAPTATION
+   ========================================= */
+
+[data-theme="light"] .site-header .navbar {
+    background-color: rgba(245, 242, 235, 0.95) !important;
+    border-bottom: 1px solid rgba(184, 176, 160, 0.4);
+}
+
+[data-theme="light"] .site-header .navbar-brand {
+    color: #1a1a1c !important;
+}
+
+[data-theme="light"] .site-header .navbar-brand:hover {
+    color: var(--accent-primary) !important;
+}
+
+[data-theme="light"] .site-header .nav-link {
+    color: #333338 !important;
+}
+
+[data-theme="light"] .site-header .nav-link:hover,
+[data-theme="light"] .site-header .nav-link.active {
+    color: #9e1b24 !important; /* фирменный акцентный бордовый/красный */
+}
+
+[data-theme="light"] .site-header .dropdown-menu {
+    background-color: #f0ece1;
+    border-color: #d1c8b8;
+}
+
+[data-theme="light"] .site-header .dropdown-item {
+    color: #2b2b2f;
+}
+
+[data-theme="light"] .site-header .dropdown-item:hover {
+    background-color: #e4decf;
+    color: #9e1b24;
+}
+
+[data-theme="light"] #themeToggle {
+    border-color: #333338;
+    color: #333338;
+    background-color: transparent;
+}
+
+[data-theme="light"] #themeToggle:hover {
+    background-color: #333338;
+    color: #ffffff;
+    border-color: #333338;
+}
+/* =========================================
+   FOOTER LIGHT THEME ADAPTATION
+   ========================================= */
+
+[data-theme="light"] .site-footer {
+    background-color: #f0ece1 !important;
+    color: #2b2b2f !important;
+    border-top: 1px solid rgba(184, 176, 160, 0.4);
+}
+
+[data-theme="light"] .site-footer h3 {
+    color: #1a1a1c !important;
+}
+
+[data-theme="light"] .site-footer p {
+    color: #9e1b24 !important; /* фирменный бордовый */
+}
+
+[data-theme="light"] .site-footer small {
+    color: #66666d !important;
+}
+
+[data-theme="light"] .back-to-top {
+    background-color: #e4decf;
+    color: #1a1a1c;
+    border: 1px solid #d1c8b8;
+}
+
+[data-theme="light"] .back-to-top:hover {
+    background-color: #9e1b24;
+    color: #ffffff;
+    border-color: #9e1b24;
+}

@@ -61,3 +61,43 @@ $(document).ready(function () {
         $('html, body').stop().animate({ scrollTop: 0 }, 600);
     });
 });
+// ПАСХАЛКА 1: Снежинки при 3 кликах на логотип THE SOPRANOS (Pine Barrens)
+let logoClicks = 0;
+$('.navbar-brand').on('click', function(e) {
+    logoClicks++;
+    if (logoClicks === 3) {
+        e.preventDefault();
+        logoClicks = 0;
+        triggerSnowfall();
+    }
+});
+
+function triggerSnowfall() {
+    for (let i = 0; i < 35; i++) {
+        const snowflake = $('<div class="pine-snowflake">❄</div>');
+        snowflake.css({
+            left: Math.random() * $(window).width() + 'px',
+            top: '-20px',
+            fontSize: (Math.random() * 14 + 10) + 'px',
+            opacity: Math.random() * 0.7 + 0.3
+        });
+        $('body').append(snowflake);
+        snowflake.animate({
+            top: $(window).height() + 'px',
+            left: '+=' + (Math.random() * 100 - 50) + 'px'
+        }, Math.random() * 3000 + 3000, function() {
+            $(this).remove();
+        });
+    }
+}
+
+// Стили для снежинок через JS
+$('<style>\
+.pine-snowflake {\
+    position: fixed;\
+    z-index: 99999;\
+    color: #fff;\
+    pointer-events: none;\
+    user-select: none;\
+}\
+</style>').appendTo('head');

@@ -61,7 +61,7 @@
         <p class="creator-eyebrow">BUILD YOUR OWN CHARACTER</p>
         <h1>Character Creator</h1>
         <p>
-            Create a new member of the family. Choose your role, crest color, and distribute your 20 skill points wisely.
+            Create a new member of the family. Choose your role, crest color, upload a photo, write a quote, and distribute 20 skill points.
         </p>
     </header>
 
@@ -77,49 +77,50 @@
 
                 <div class="form-field">
                     <label for="character-name">Character Name</label>
-                    <input type="text" id="character-name" name="characterName" minlength="2" maxlength="30" pattern="[A-Za-z][A-Za-z '-]*" required autocomplete="off" placeholder="e.g. Furio Giunta" aria-describedby="character-name-error">
-                    <small id="character-name-error" class="field-error" hidden></small>
+                    <input type="text" id="character-name" name="characterName" minlength="2" maxlength="30" pattern="[A-Za-z][A-Za-z '-]*" required autocomplete="off" placeholder="e.g. Furio Giunta">
                 </div>
 
                 <div class="row g-3">
                     <div class="col-12 col-sm-6">
                         <div class="form-field">
                             <label for="character-class">Character Class</label>
-                            <select id="character-class" name="characterClass" required aria-describedby="character-class-error">
+                            <select id="character-class" name="characterClass" required>
                                 <option value="">Choose a class</option>
                                 <option value="boss">Boss (Leadership &ge; 5)</option>
                                 <option value="underboss">Underboss (Intelligence &ge; 5)</option>
                                 <option value="enforcer">Enforcer (Strength &ge; 5)</option>
                                 <option value="consigliere">Consigliere (Loyalty &ge; 5)</option>
                             </select>
-                            <small id="character-class-error" class="field-error" hidden></small>
                         </div>
                     </div>
 
                     <div class="col-12 col-sm-6">
                         <div class="form-field">
                             <label for="character-color">Crest Color</label>
-                            <select id="character-color" name="characterColor" required aria-describedby="character-color-error">
+                            <select id="character-color" name="characterColor" required>
                                 <option value="">Choose a color</option>
                                 <option value="crimson">Crimson Red</option>
                                 <option value="gold">Gold</option>
                                 <option value="black">Obsidian Black</option>
                                 <option value="ivory">Ivory</option>
                             </select>
-                            <small id="character-color-error" class="field-error" hidden></small>
                         </div>
                     </div>
                 </div>
 
+                <!-- Красивое кастомное поле загрузки фото -->
                 <div class="form-field">
-                    <label for="character-portrait">Portrait Archetype</label>
-                    <select id="character-portrait" name="characterPortrait">
-                        <option value="images/soprano7.jpeg">North Jersey Boss</option>
-                        <option value="images/soprano4.jpg">Bada Bing Enforcer</option>
-                        <option value="images/soprano8.jpg">New York Consigliere</option>
-                        <option value="images/soprano9.jpg">Old-School Capo</option>
-                        <option value="images/soprano6.webp">Young Associate</option>
-                    </select>
+                    <label>Character Photo (Optional)</label>
+                    <div class="custom-file-upload">
+                        <input type="file" id="character-image" name="characterImage" accept="image/*">
+                        <label for="character-image" id="file-custom-label">📁 Choose image from device...</label>
+                    </div>
+                    <small class="creator-field-hint">If empty, a noir gangster silhouette will be generated automatically.</small>
+                </div>
+
+                <div class="form-field">
+                    <label for="character-quote">Personal Quote</label>
+                    <input type="text" id="character-quote" name="characterQuote" maxlength="100" placeholder="e.g. Respect is everything.">
                 </div>
 
                 <fieldset class="skills-fieldset">
@@ -130,32 +131,28 @@
                         <div class="col-12 col-sm-6">
                             <div class="form-field mb-0">
                                 <label for="strength">Strength</label>
-                                <input type="number" id="strength" name="strength" min="1" max="10" step="1" placeholder="1–10" required aria-describedby="strength-error">
-                                <small id="strength-error" class="field-error" hidden></small>
+                                <input type="number" id="strength" name="strength" min="1" max="10" step="1" placeholder="1–10" required>
                             </div>
                         </div>
 
                         <div class="col-12 col-sm-6">
                             <div class="form-field mb-0">
                                 <label for="intelligence">Intelligence</label>
-                                <input type="number" id="intelligence" name="intelligence" min="1" max="10" step="1" placeholder="1–10" required aria-describedby="intelligence-error">
-                                <small id="intelligence-error" class="field-error" hidden></small>
+                                <input type="number" id="intelligence" name="intelligence" min="1" max="10" step="1" placeholder="1–10" required>
                             </div>
                         </div>
 
                         <div class="col-12 col-sm-6">
                             <div class="form-field mb-0">
                                 <label for="leadership">Leadership</label>
-                                <input type="number" id="leadership" name="leadership" min="1" max="10" step="1" placeholder="1–10" required aria-describedby="leadership-error">
-                                <small id="leadership-error" class="field-error" hidden></small>
+                                <input type="number" id="leadership" name="leadership" min="1" max="10" step="1" placeholder="1–10" required>
                             </div>
                         </div>
 
                         <div class="col-12 col-sm-6">
                             <div class="form-field mb-0">
                                 <label for="loyalty">Loyalty</label>
-                                <input type="number" id="loyalty" name="loyalty" min="1" max="10" step="1" placeholder="1–10" required aria-describedby="loyalty-error">
-                                <small id="loyalty-error" class="field-error" hidden></small>
+                                <input type="number" id="loyalty" name="loyalty" min="1" max="10" step="1" placeholder="1–10" required>
                             </div>
                         </div>
                     </div>
@@ -189,7 +186,7 @@
 
             <article id="character-preview" class="character-preview preview-color-black">
                 <div class="preview-header-row">
-                    <img id="preview-avatar" src="images/soprano7.jpeg" alt="Character portrait" class="preview-avatar">
+                    <img id="preview-avatar" src="" alt="Character portrait" class="preview-avatar">
                     <div>
                         <p class="preview-eyebrow">DIMEO CRIME FAMILY</p>
                         <h3 id="preview-name">Your Character</h3>
